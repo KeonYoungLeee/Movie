@@ -10,13 +10,11 @@ const AppLayout = ({ children }) => {
       <Header />
       <Row>
         <Col >
-          <div>
-            {children}
-          </div>
+          {children}
         </Col>
-        <Col>
+        {/* <Col>
           <Footer />
-        </Col>
+        </Col> */}
       </Row>
     </>
   );

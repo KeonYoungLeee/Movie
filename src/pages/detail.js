@@ -8,13 +8,19 @@ const Detail = ({ movieId }) => {
   const dispatch = useDispatch();
   const { isLoaded, detailResults } = useSelector(state => state.movie);
 
-  const DetailImage = styled.div`
-  position: relative;
-  z-index: -1;
-  height: 40vh;
-  filter: grayscale(100%);
-  background: url(https://image.tmdb.org/t/p/original/${detailResults.backdrop_path}) center center / cover no-repeat;
-    
+  const BackgroundImageSection = styled.div`
+    position: relative;
+    z-index: -1;
+    height: 40vh;
+    filter: grayscale(100%);
+    background: url(https://image.tmdb.org/t/p/original/${detailResults.backdrop_path}) center center / cover no-repeat;
+  `
+
+  const PosterSection = styled.div`
+    width: 300px;
+    margin-top: -5rem;
+    margin-right: 2rem;
+    background: url(https://image.tmdb.org/t/p/original/${detailResults.poster_path});
   `
 
   console.log(`movieId = ${movieId}`);
@@ -55,8 +61,12 @@ const Detail = ({ movieId }) => {
 
   return (
     <div>
-      <DetailImage />
-      
+      <div style= {{ marginBottom: '3em'}}>
+        <BackgroundImageSection />
+      </div>
+      <div style= {{ marginBottom: '3em'}}>
+        <PosterSection />
+      </div>
     </div>
   );
 };
