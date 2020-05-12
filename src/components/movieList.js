@@ -17,7 +17,7 @@ const MovieList = ({ movies, id }) => {
     <>
       <Card 
         bodyStyle={{ padding: '5px', }}
-        style={{ width: 157, height: 300, cursor: 'pointer' }} 
+        style={{ cursor: 'pointer' }} 
         cover={(
           movies.poster_path 
             ? <img src={`https://image.tmdb.org/t/p/original/${movies.poster_path}`} /> 

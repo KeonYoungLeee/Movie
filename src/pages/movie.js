@@ -54,17 +54,41 @@ const Movie = () => {
   }, [now, current, popular]);
 
   const MovieLayout = styled.div`
-    margin: auto 200px;
+    width: 90vw;
+    margin: 0px auto;
+    
+    @media (min-width: 1200px) {
+      width: 1200px;
+    }
   `;
 
   const MovieState = styled.div`
+    & div {
+      display: flex;
+      -webkit-box-pack: start;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+    }
+
     & h2 {
 
     }
+  `;
 
-    & div {
-      
+  const MovieCard = styled.div`
+  
+    position: relative;
+    flex-basis: 100%;
+    padding: 10px;
+
+    @media (min-width: 1200px) {
+      flex-basis: calc(33.3333% - 20px);
     }
+
+    @media (min-width: 768px) {
+      flex-basis: calc(50% - 20px);
+    }
+
   `;
 
   return (
@@ -79,38 +103,46 @@ const Movie = () => {
               isLoaded ? 
                 now && (
                   <>
-                    <h2>Now Playing</h2>
-                    <div style={{ marginTop: '25px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 125px)', gap: '30px', marginRight: '30px', marginLeft: '30px' }}>
-                      {currentResults && currentResults.length > 0 && currentResults.map(movies => {
-                        return (
-                          <MovieList key={movies.id} movies={movies} id={movies.id} />
-                        );
-                      })}
-                    </div>
+                    <MovieState>
+                      <h2>Now Playing</h2>
+                      <div>
+                        {currentResults && currentResults.length > 0 && currentResults.map(movies => {
+                          return (
+                            <MovieCard>
+                              <MovieList key={movies.id} movies={movies} id={movies.id} />
+                            </MovieCard>
+                          );
+                        })}
+                      </div>
+                    </MovieState>
                   </>
                 )
                 || current && (
                   <>
-                    <h2>Current Playing</h2>
-                    <div style={{ marginTop: '25px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 125px)', gap: '30px', marginRight: '30px', marginLeft: '30px' }}>
-                      {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
-                        return (
-                          <MovieList key={movies.id} movies={movies} id={movies.id} />
-                        );
-                      })}
-                    </div>
+                    <MovieState>
+                      <h2>Current Playing</h2>
+                      <div>
+                        {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
+                          return (
+                            <MovieList key={movies.id} movies={movies} id={movies.id} />
+                          );
+                        })}
+                      </div>
+                    </MovieState>
                   </>
                 )
                 || popular && (
                   <>
-                    <h2>Popular Playing</h2>
-                    <div style={{ marginTop: '25px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 125px)', gap: '30px', marginRight: '30px', marginLeft: '30px' }}>
-                      {popularResults && popularResults.length > 0 && popularResults.map(movies => {
-                        return (
-                          <MovieList key={movies.id} movies={movies} id={movies.id} />
-                        );
-                      })}
-                    </div>
+                    <MovieState>
+                      <h2>Popular Playing</h2>
+                      <div>
+                        {popularResults && popularResults.length > 0 && popularResults.map(movies => {
+                          return (
+                            <MovieList key={movies.id} movies={movies} id={movies.id} />
+                          );
+                        })}
+                      </div>
+                    </MovieState>
                   </>
                 )
               : <div>isLoading...</div>
