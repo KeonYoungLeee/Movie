@@ -63,17 +63,16 @@ const Movie = () => {
   `;
 
   const MovieState = styled.div`
-    & div {
-      display: flex;
-      -webkit-box-pack: start;
-      justify-content: flex-start;
-      flex-flow: row wrap;
-    }
-
     & h2 {
 
     }
   `;
+
+  const MovieCardLayout = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+  `
 
   const MovieCard = styled.div`
   
@@ -81,12 +80,12 @@ const Movie = () => {
     flex-basis: 100%;
     padding: 10px;
 
-    @media (min-width: 1200px) {
-      flex-basis: calc(33.3333% - 20px);
+    @media (min-width: 768px) {
+      flex-basis: 50%;
     }
 
-    @media (min-width: 768px) {
-      flex-basis: calc(50% - 20px);
+    @media (min-width: 1200px) {
+      flex-basis: 33.1%;
     }
 
   `;
@@ -105,7 +104,7 @@ const Movie = () => {
                   <>
                     <MovieState>
                       <h2>Now Playing</h2>
-                      <div>
+                      <MovieCardLayout>
                         {currentResults && currentResults.length > 0 && currentResults.map(movies => {
                           return (
                             <MovieCard>
@@ -113,7 +112,7 @@ const Movie = () => {
                             </MovieCard>
                           );
                         })}
-                      </div>
+                      </MovieCardLayout>
                     </MovieState>
                   </>
                 )
