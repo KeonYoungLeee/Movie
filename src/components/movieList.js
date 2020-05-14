@@ -6,11 +6,9 @@ import { Card, Avatar } from 'antd';
 import { useDispatch } from 'react-redux';
 
 const MovieList = ({ movies, id }) => {
-  const dispatch = useDispatch();
 
   const onDetail = () => {
     Router.push({ pathname: `/detail`, query: { movieId : parseInt(id) }}, `/detail/${parseInt(id)}`);
-    // Router.push({ pathname: `/detail`, query: { movieId : parseInt(id) }}, `/detail/${parseInt(id)}`);
   };
 
   const CardList = styled(Card)`
@@ -22,14 +20,15 @@ const MovieList = ({ movies, id }) => {
     cursor: pointer;
     border-radius: 5px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     ${ movies.poster_path 
       ?
       `background: url(https://image.tmdb.org/t/p/original/${movies.poster_path}) center center / cover no-repeat;` 
       :
-      (<div style={{ backgroundColor: '#141414', height: '233px', width: '100%', lineHeight: '233px', display: 'flex', justifyContent: 'center' }}>
-        <p style={{ color : 'white'}}>no image</p>
-      </div>
-      )}
+      `background: url();`
+    }
     &:after {
       content: "";
       position: absolute;
@@ -39,14 +38,15 @@ const MovieList = ({ movies, id }) => {
       bottom: 0px;
       background-color: rgba(0, 0, 0, 0.3);
     }
+
+    & p {
+      position: relative;
+      z-index: 1;
+      color : white;
+      font-size : 1.3em;
+      margin-bottom: 0;
+    }
   `
-
-  const CardMeta = styled(Card.Meta)`
-    textAlign: left; 
-    padding: 5px;
-    color : white;
-  `;
-
 
   return (
     <>
@@ -54,9 +54,7 @@ const MovieList = ({ movies, id }) => {
         bodyStyle={{ padding: '5px', }}
         onClick={onDetail}
       >
-        <CardMeta
-          title={movies.title}
-        />
+        <p>{movies.title}</p>\
       </CardList>
     </>
   );
