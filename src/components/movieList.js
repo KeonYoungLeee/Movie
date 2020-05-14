@@ -14,25 +14,47 @@ const MovieList = ({ movies, id }) => {
   };
 
   const CardList = styled(Card)`
+    position: relative;
+    flex-basis: 100%;
+    height: 30vh;
+    margin-bottom: 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 3px 0px;
     cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    ${ movies.poster_path 
+      ?
+      `background: url(https://image.tmdb.org/t/p/original/${movies.poster_path}) center center / cover no-repeat;` 
+      :
+      (<div style={{ backgroundColor: '#141414', height: '233px', width: '100%', lineHeight: '233px', display: 'flex', justifyContent: 'center' }}>
+        <p style={{ color : 'white'}}>no image</p>
+      </div>
+      )}
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   `
+
+  const CardMeta = styled(Card.Meta)`
+    textAlign: left; 
+    padding: 5px;
+    color : white;
+  `;
 
 
   return (
     <>
       <CardList 
         bodyStyle={{ padding: '5px', }}
-        cover={(
-          movies.poster_path 
-            ? <img src={`https://image.tmdb.org/t/p/original/${movies.poster_path}`} /> 
-            : (<div style={{ backgroundColor: '#141414', height: '233px', width: '100%', lineHeight: '233px', display: 'flex', justifyContent: 'center' }}>
-                <p style={{ color : 'white'}}>no image</p>
-              </div>)
-        )}
         onClick={onDetail}
       >
-        <Card.Meta
-          style={{ textAlign: "left", padding: '5px' }}
+        <CardMeta
           title={movies.title}
         />
       </CardList>
