@@ -35,19 +35,19 @@ const Movie = () => {
     setNow(e.target.value);
   });
 
-  const onButtonNow = useCallback(() => {
+  const onClickNow = useCallback(() => {
     setNow(true);
     setCurrent(false);
     setPopular(false);
   }, [now, current, popular]);
 
-  const onButtonCurrent = useCallback(() => {
+  const onClickCurrent = useCallback(() => {
     setNow(false);
     setCurrent(true);
     setPopular(false);
   }, [now, current, popular]);
 
-  const onButtonPopular = useCallback(() => {
+  const onClickPopular = useCallback(() => {
     setNow(false);
     setCurrent(false);
     setPopular(true);
@@ -74,6 +74,50 @@ const Movie = () => {
     flex-flow: row wrap;
   `
 
+
+
+  const MovieLayoutList = styled.div`
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+
+    & button {
+      padding: 13px 60px 15px 60px;
+      font-size: 1.7rem;
+      border-radius: 22px;
+    }
+    
+    & button:nth-child(1) {
+      transition-duration: 0.4s;
+      background-color: #555555;
+      color: #FFFFFF;
+    }
+    & button:nth-child(1):hover {
+      background-color: #FFFFFF;
+      color: #555555;
+    }
+    & button:nth-child(2) {
+      transition-duration: 0.4s;
+      background-color: #555555;
+      color: #FFFFFF;
+    }
+    & button:nth-child(2):hover {
+      background-color: #FFFFFF;
+      color: #555555;
+    }
+    & button:nth-child(3) {
+      transition-duration: 0.4s;
+      background-color: #555555;
+      color: #FFFFFF;
+    }
+    & button:nth-child(3):hover {
+      background-color: #FFFFFF;
+      color: #555555;
+    }
+  `
+
+
   const MovieCard = styled.div`
   
     position: relative;
@@ -87,7 +131,6 @@ const Movie = () => {
     @media (min-width: 1200px) {
       flex-basis: 33.1%;
     }
-
   `;
 
   return (
@@ -95,9 +138,11 @@ const Movie = () => {
       <MovieLayout>
         {
           <>
-            <button onClick={onButtonNow} value={now} onChange={onChangeNow}>now</button>
-            <button onClick={onButtonCurrent} value={current} onChange={onChangeCurrent}>current</button>
-            <button onClick={onButtonPopular} value={popular} onChange={onChangePopular}>popular</button>
+            <MovieLayoutList>
+              <button onClick={onClickNow} value={now} onChange={onChangeNow} >now</button>
+              <button onClick={onClickCurrent} value={current} onChange={onChangeCurrent} >current</button>
+              <button onClick={onClickPopular} value={popular} onChange={onChangePopular} >popular</button>
+            </MovieLayoutList>
             {
               isLoaded ? 
                 now && (
@@ -120,13 +165,15 @@ const Movie = () => {
                   <>
                     <MovieState>
                       <h2>Current Playing</h2>
-                      <div>
+                      <MovieCardLayout>
                         {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
                           return (
-                            <MovieList key={movies.id} movies={movies} id={movies.id} />
+                            <MovieCard>
+                              <MovieList key={movies.id} movies={movies} id={movies.id} />
+                            </MovieCard>
                           );
                         })}
-                      </div>
+                      </MovieCardLayout>
                     </MovieState>
                   </>
                 )
@@ -134,13 +181,15 @@ const Movie = () => {
                   <>
                     <MovieState>
                       <h2>Popular Playing</h2>
-                      <div>
+                      <MovieCardLayout>
                         {popularResults && popularResults.length > 0 && popularResults.map(movies => {
                           return (
-                            <MovieList key={movies.id} movies={movies} id={movies.id} />
+                            <MovieCard>
+                              <MovieList key={movies.id} movies={movies} id={movies.id} />
+                            </MovieCard>
                           );
                         })}
-                      </div>
+                      </MovieCardLayout>
                     </MovieState>
                   </>
                 )
