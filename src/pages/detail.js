@@ -8,24 +8,6 @@ const Detail = ({ movieId }) => {
   const dispatch = useDispatch();
   const { isLoaded, detailResults } = useSelector(state => state.movie);
 
-  const BackgroundImageSection = styled.div`
-    position: relative;
-    z-index: -1;
-    height: 40vh;
-    filter: grayscale(100%);
-    background: url(https://image.tmdb.org/t/p/original/${detailResults.backdrop_path}) center center / cover no-repeat;
-  `
-
-  const PosterSection = styled.div`
-    width: 300px;
-    margin-top: -5rem;
-    margin-right: 2rem;
-    background: url(https://image.tmdb.org/t/p/original/${detailResults.poster_path});
-  `
-
-  console.log(`movieId = ${movieId}`);
-  console.log(detailResults);
-
   useEffect(() => {
     dispatch({
       type: DETAIL_MOVIES_REQUEST,
@@ -59,13 +41,46 @@ const Detail = ({ movieId }) => {
   // vote_average: 7.1
   // vote_count: 2093
 
+  const BackgroundImageSection = styled.div`
+    position: relative;
+    z-index: -1;
+    height: 40vh;
+    filter: grayscale(100%);
+    background: url(https://image.tmdb.org/t/p/original/${detailResults.backdrop_path}) center center / cover no-repeat;
+  `
+
+  const PosterSection = styled.div`
+    display: flex;
+    width: 90vw;
+    margin: 0px auto;
+    
+    & img {
+      width: 300px;
+      margin-top: -5rem;
+      margin-right: 2rem;
+    }
+
+    @media (min-width: 1200px) {
+      width: 1200px;
+    }
+  `
+
+  console.log();
+
   return (
     <div>
       <div style= {{ marginBottom: '3em'}}>
         <BackgroundImageSection />
       </div>
       <div style= {{ marginBottom: '3em'}}>
-        <PosterSection />
+        <PosterSection>
+          <img src={`https://image.tmdb.org/t/p/original/${detailResults.poster_path}`} />
+          <div>
+            <h2>{detailResults.title} <span>{`(${detailResults.release_date.slice(0,4)})`}</span></h2>
+            <h3>{detailResults.genres.map(((v) => { return <>{v.name}&nbsp;</> }))}<span>{detailResults.runtime}分</span></h3>
+            <p>{detailResults.overview}</p>
+          </div>
+        </PosterSection>
       </div>
     </div>
   );

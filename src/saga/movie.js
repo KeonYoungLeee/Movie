@@ -123,9 +123,7 @@ function detailMoviesAPI (movieId) {
 
 function* detailMovies(action) {
   try {
-    console.log(action);
     const result = yield call(detailMoviesAPI, action.movieId);
-    console.log(result);
     yield put({
       type: DETAIL_MOVIES_SUCCESS,
       detaildata: result.data,
