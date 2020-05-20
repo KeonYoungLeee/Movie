@@ -73,7 +73,7 @@ const Detail = ({ movieId }) => {
 
 Detail.propTypes = {
   movieId: PropTypes.number.isRequired,
-}
+};
 
 Detail.getInitialProps = async ( context ) => {
   console.log(context);
