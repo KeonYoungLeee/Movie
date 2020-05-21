@@ -2,6 +2,7 @@ import React, { useState, useCallback} from 'react';
 import MovieList from '../../components/movieList';
 import { MovieWrapper, MovieLayoutList, MovieCardLayout, MovieCard } from './style';
 
+
 const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults }) => {
 
   const [now, setNow] = useState(true);
