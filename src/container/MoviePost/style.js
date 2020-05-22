@@ -1,18 +1,12 @@
 import styled from 'styled-components';
 
-export const MovieWrapper = styled.div`
+export const Wrapper = styled.div`
   width: 90vw;
   margin: 0px auto;
 
   @media (min-width: 1200px) {
     width: 1200px;
   }
-`;
-
-export const MovieCardLayout = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: row wrap;
 `;
 
 export const MovieLayoutList = styled.div`
@@ -55,6 +49,13 @@ export const MovieLayoutList = styled.div`
     color: #555555;
   }
 `;
+
+export const MovieCardLayout = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+`;
+
 
 export const MovieCard = styled.div`
 

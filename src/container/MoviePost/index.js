@@ -1,7 +1,6 @@
 import React, { useState, useCallback} from 'react';
-import MovieList from '../../components/movieList';
-import { MovieWrapper, MovieLayoutList, MovieCardLayout, MovieCard } from './style';
-
+import { MovieLayoutList, MovieCardLayout, MovieCard, Wrapper } from './style';
+import MovieContent from '../../components/MovieContent';
 
 const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults }) => {
 
@@ -39,7 +38,7 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
 
 
   return (
-    <MovieWrapper>
+    <Wrapper>
       {
         <>
           <MovieLayoutList>
@@ -56,7 +55,7 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
                     {currentResults && currentResults.length > 0 && currentResults.map(movies => {
                       return (
                         <MovieCard>
-                          <MovieList key={movies.id} movies={movies} id={movies.id} />
+                          <MovieContent key={movies.id} movies={movies} id={movies.id} />
                         </MovieCard>
                       );
                     })}
@@ -70,7 +69,7 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
                     {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
                       return (
                         <MovieCard>
-                          <MovieList key={movies.id} movies={movies} id={movies.id} />
+                          <MovieContent key={movies.id} movies={movies} id={movies.id} />
                         </MovieCard>
                       );
                     })}
@@ -84,7 +83,7 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
                     {popularResults && popularResults.length > 0 && popularResults.map(movies => {
                       return (
                         <MovieCard>
-                          <MovieList key={movies.id} movies={movies} id={movies.id} />
+                          <MovieContent key={movies.id} movies={movies} id={movies.id} />
                         </MovieCard>
                       );
                     })}
@@ -95,7 +94,7 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
           }
         </>
       }
-    </MovieWrapper>
+    </Wrapper>
   )
 };
 
