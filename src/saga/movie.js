@@ -14,7 +14,13 @@ import {
   POPULAR_MOIVES_REQUEST,
   DETAIL_MOVIES_FAILURE,
   DETAIL_MOVIES_REQUEST,
-  DETAIL_MOVIES_SUCCESS
+  DETAIL_MOVIES_SUCCESS,
+  IMAGES_MOVIES_REQUEST,
+  IMAGES_MOVIES_FAILURE,
+  IMAGES_MOVIES_SUCCESS,
+  CREDITS_MOVIES_REQUEST,
+  CREDITS_MOVIES_FAILURE,
+  CREDITS_MOVIES_SUCCESS
 } from '../reducer/movie';
 import axios from 'axios';
 import { API_KEY, LANGUAGE } from './index';
@@ -116,7 +122,6 @@ function* watchPopularMovies() {
 }
 
 function detailMoviesAPI (movieId) {
-  console.log(movieId);
   // return axios.get(`/movie/${movieId}?api_key=${API_KEY}&${LANGUAGE}`);
   return axios.get(`/movie/${movieId}?api_key=${API_KEY}`);
 }
@@ -141,6 +146,55 @@ function* watchDetailMovies() {
   yield takeLatest(DETAIL_MOVIES_REQUEST, detailMovies)
 }
 
+function imageMoviesAPI (movieId) {
+  return axios.get(`/movie/${movieId}/images?api_key=${API_KEY}`);
+}
+
+function* imageMovies(action) {
+  try {
+    const result = yield call(imageMoviesAPI, action.movieId);
+    yield put({
+      type: IMAGES_MOVIES_SUCCESS,
+      imagedata: result.data,
+    });
+  } catch (error) {
+    console.error(error);
+    yield put({
+      type: IMAGES_MOVIES_FAILURE,
+      error: error,
+    });
+  }
+}
+
+function* watchimageMovies() {
+  yield takeLatest(IMAGES_MOVIES_REQUEST, imageMovies)
+}
+
+function creditsMoviesAPI (movieId) {
+  return axios.get(`/movie/${movieId}/credits?api_key=${API_KEY}`);
+}
+
+function* creditsMovies(action) {
+  try {
+    const result = yield call(creditsMoviesAPI, action.movieId);
+    yield put({
+      type: CREDITS_MOVIES_SUCCESS,
+      creditsdata: result.data,
+    });
+  } catch (error) {
+    console.error(error);
+    yield put({
+      type: CREDITS_MOVIES_FAILURE,
+      error: error,
+    });
+  }
+}
+
+function* watchcreditsMovies() {
+  yield takeLatest(CREDITS_MOVIES_REQUEST, creditsMovies)
+}
+
+
 export default function* movieSaga() {
   yield all([
     fork(watchCurrentMovies),
@@ -148,6 +202,8 @@ export default function* movieSaga() {
     fork(watchUpcomingMoives),
     fork(watchPopularMovies),
     fork(watchDetailMovies),
+    fork(watchimageMovies),
+    fork(watchcreditsMovies),
   ]);
 }
 
