@@ -1,5 +1,5 @@
 import React, { useState, useCallback} from 'react';
-import { MovieLayoutList, MovieCardLayout, MovieCard, Wrapper } from './style';
+import { MovieLayoutList, MovieCardLayout, MovieCard, Wrapper, ResponsiveButton } from './style';
 import MovieContent from '../../components/MovieContent';
 
 const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults }) => {
@@ -42,15 +42,26 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
       {
         <>
           <MovieLayoutList>
-            <button onClick={onClickNow} value={now} onChange={onChangeNow} >now</button>
-            <button onClick={onClickCurrent} value={current} onChange={onChangeCurrent} >current</button>
-            <button onClick={onClickPopular} value={popular} onChange={onChangePopular} >popular</button>
+            { now 
+              ? <ResponsiveButton>上映中</ResponsiveButton>
+              : <button onClick={onClickNow} value={now} onChange={onChangeNow} >上映中</button>
+            }
+            {
+              current
+              ? <ResponsiveButton>上映予定</ResponsiveButton>
+              : <button onClick={onClickCurrent} value={current} onChange={onChangeCurrent} >上映予定</button>
+            
+            }
+            {
+              popular
+              ? <ResponsiveButton>人気</ResponsiveButton>
+              : <button onClick={onClickPopular} value={popular} onChange={onChangePopular} >人気</button>
+            }
           </MovieLayoutList>
           {
             isLoaded ? 
               now && (
                 <>
-                  <h2>Now Playing</h2>
                   <MovieCardLayout>
                     {currentResults && currentResults.length > 0 && currentResults.map(movies => {
                       return (
@@ -64,7 +75,6 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
               )
               || current && (
                 <>
-                  <h2>Current Playing</h2>
                   <MovieCardLayout>
                     {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
                       return (
@@ -78,7 +88,6 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
               )
               || popular && (
                 <>
-                  <h2>Popular Playing</h2>
                   <MovieCardLayout>
                     {popularResults && popularResults.length > 0 && popularResults.map(movies => {
                       return (

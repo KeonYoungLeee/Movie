@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const PosterSection = styled.div`
-  display: flex;
-  width: 90vw;
-  margin: 0px auto;
 
   & img {
     width: 300px;
     margin-top: -5rem;
     margin-right: 2rem;
+    z-index: 1;
   }
 
   & h2 {
@@ -24,7 +22,10 @@ export const PosterSection = styled.div`
     font-size: 1.4em;
   }
 
-  @media (min-width: 1200px) {
-    width: 1200px;
-  }
+  
+`;
+
+
+export const ProfileSection = styled.div`
+
 `;

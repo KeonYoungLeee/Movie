@@ -1,21 +1,23 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
-import Header from '../container/header';
 import Footer from '../container/footer';
+import Header from '../container/Header';
+import { RowSylte } from './AppLayout.Style';
 
 const AppLayout = ({ children }) => {
+  console.log(children);
   return (
     <>
       <Header />
-      <Row>
-        <Col >
-          {children}
-        </Col>
-        {/* <Col>
-          <Footer />
-        </Col> */}
-      </Row>
+        <RowSylte>
+          <Col >
+            {children}
+          </Col>
+          {/* <Col>
+            <Footer />
+          </Col> */}
+        </RowSylte>
     </>
   );
 };

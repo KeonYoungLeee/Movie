@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BackgroundImageSection, Wrapper } from './style';
+import { Wrapper, BackGround, BackgroundImageSection, MediaQueryDetail } from './style';
 import DetailContent from '../../components/DetailContent';
 
-const DetailPost = ({ detailResults }) => {
+const DetailPost = ({ detailResults, imageResults, creditsResults }) => {
   return (
-    <div>
+    <BackGround>
       <Wrapper>
         <BackgroundImageSection 
           backdropPath={detailResults.backdrop_path}/>
       </Wrapper>
-      <Wrapper>
+      {/* <Wrapper> */}
+      <MediaQueryDetail>
         <DetailContent 
-          detailResults={detailResults} />
-      </Wrapper>
-    </div>
+          detailResults={detailResults} 
+          imageResults={imageResults} 
+          creditsResults={creditsResults} />
+      {/* </Wrapper> */}
+      </MediaQueryDetail>
+    </BackGround>
   );
 };
 
 DetailPost.propTypes = {
   detailResults: PropTypes.object.isRequired,
+  imageResults: PropTypes.object.isRequired,
+  creditsResults: PropTypes.object.isRequired,
 };
 
 export default DetailPost;
