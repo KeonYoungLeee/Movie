@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, BackGround, BackgroundImageSection, MediaQueryDetail } from './style';
+import { Wrapper, BackGround, BackgroundImageSection, WrapperDetailContent } from './style';
 import DetailContent from '../../components/DetailContent';
 
 const DetailPost = ({ detailResults, imageResults, creditsResults }) => {
@@ -10,14 +10,12 @@ const DetailPost = ({ detailResults, imageResults, creditsResults }) => {
         <BackgroundImageSection 
           backdropPath={detailResults.backdrop_path}/>
       </Wrapper>
-      {/* <Wrapper> */}
-      <MediaQueryDetail>
+      <WrapperDetailContent>
         <DetailContent 
           detailResults={detailResults} 
           imageResults={imageResults} 
           creditsResults={creditsResults} />
-      {/* </Wrapper> */}
-      </MediaQueryDetail>
+      </WrapperDetailContent>
     </BackGround>
   );
 };

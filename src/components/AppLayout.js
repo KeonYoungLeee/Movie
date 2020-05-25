@@ -1,12 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
-import Footer from '../container/footer';
-import Header from '../container/Header';
+import Header from '../components/Header';
 import { RowSylte } from './AppLayout.Style';
 
 const AppLayout = ({ children }) => {
-  console.log(children);
   return (
     <>
       <Header />
@@ -14,9 +12,6 @@ const AppLayout = ({ children }) => {
           <Col >
             {children}
           </Col>
-          {/* <Col>
-            <Footer />
-          </Col> */}
         </RowSylte>
     </>
   );
