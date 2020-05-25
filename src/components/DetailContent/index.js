@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { PosterSection, ProfileSection } from './style';
 
 const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
+  
+
+  const character = creditsResults.cast.map(v => v.character);
 
   return (
     <div>
@@ -15,7 +18,32 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
         </div>
       </PosterSection>
       <ProfileSection>
-        
+        <h2>俳優</h2>
+        <div>
+          <div>
+            {
+              creditsResults.map((v) => {
+                return (
+                  <img src={`https://image.tmdb.org/t/p/w300/${propfilePath}`} />
+                );
+              })
+            }
+            
+          </div>
+            <h3>{character}</h3>
+            {
+              creditsResults  && creditsResults.cast.map((v) => {
+                return (
+                  <>
+                    {v.profile_path === null 
+                      ? <p>image x</p>
+                      : <img src={`https://image.tmdb.org/t/p/w300/${v.profile_path}`} />
+                    }
+                  </>
+                );
+              })
+            }
+        </div>
       </ProfileSection>
     </div>
   );
