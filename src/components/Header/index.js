@@ -20,14 +20,6 @@ const Header = () => {
     <Background>
     {/* Link페이지 : https://codepen.io/biggerbig/pen/QNayZw */}
       <Wrapper>
-        {/* <BtnClick value={classToggle} onChange={onChangeClassToggle} onClick={onClickClassToggle} class={}/>
-        <PageCover />
-        <OpenedMenu>
-          <CloseMenu />
-        </OpenedMenu>
-        */}
-
-        
         <Container>
           <ul>
             <li key="home"><Link href="/">ホーム</Link></li>

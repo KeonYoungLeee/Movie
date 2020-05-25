@@ -17,12 +17,13 @@ export const BackgroundImageSection = styled.div`
   z-index: 0;
 `;
 
-export const MediaQueryDetail = styled.div`
-  display: flex;
+export const WrapperDetailContent = styled.div`
+
   width: 90vw;
   margin: 0px auto;
-  
+
   @media (min-width: 1200px) {
     width: 1200px;
   }
+
 `;
