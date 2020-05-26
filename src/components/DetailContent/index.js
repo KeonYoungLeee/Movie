@@ -1,11 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PosterSection, ProfileSection } from './style';
+import Swiper from 'react-id-swiper';
+import { PosterSection, ProfileSection, PropfileWrapper, PropfileContent, PropfileName, PropfileDisplay } from './style';
 
 const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
   
-
-  const character = creditsResults.cast.map(v => v.character);
+  const params = {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 5,
+      },
+      1200: {
+        slidesPerView: 6,
+      },
+    },
+  };
 
   return (
     <div>
@@ -18,32 +32,31 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
         </div>
       </PosterSection>
       <ProfileSection>
-        <h2>俳優</h2>
-        <div>
-          <div>
-            {
-              creditsResults.map((v) => {
-                return (
-                  <img src={`https://image.tmdb.org/t/p/w300/${propfilePath}`} />
-                );
-              })
-            }
-            
-          </div>
-            <h3>{character}</h3>
-            {
-              creditsResults  && creditsResults.cast.map((v) => {
-                return (
-                  <>
-                    {v.profile_path === null 
-                      ? <p>image x</p>
-                      : <img src={`https://image.tmdb.org/t/p/w300/${v.profile_path}`} />
-                    }
-                  </>
-                );
-              })
-            }
-        </div>
+        <PropfileWrapper>
+          <h2>俳優</h2>
+            <Swiper {...params}>
+            <PropfileDisplay>
+              {
+                creditsResults  && creditsResults.cast.map((v) => {
+                  return (
+                    <>
+                      {v.profile_path === null
+                        ? <PropfileContent>
+                            <span>image x</span>
+                            <PropfileName>{v.name}</PropfileName>
+                          </PropfileContent>
+                        : <PropfileContent>
+                            <img src={`https://image.tmdb.org/t/p/w300/${v.profile_path}`} />
+                            <PropfileName>{v.name}</PropfileName>
+                          </PropfileContent>
+                      }
+                    </>
+                  );
+                })
+              }
+          </PropfileDisplay>
+            </Swiper>
+        </PropfileWrapper>
       </ProfileSection>
     </div>
   );

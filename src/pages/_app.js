@@ -9,12 +9,16 @@ import AppLayout from '../components/AppLayout';
 import reducer from '../reducer/index';
 import rootSaga from '../saga';
 
+import 'swiper/css/swiper.css';
+import './../components/DetailContent/ProfileSection/swiper.css';
+
 const MovieProject = ({ Component, store, pageProps }) => {
   return (
     <Provider store={store}>
       <Head>
         <title>Movie API Project</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
+        <script src="https://unpkg.com/react-id-swiper@3.0.0/lib/react-id-swiper.min.js"></script>
       </Head>
       <AppLayout>
         <Component {...pageProps}/>
