@@ -25,11 +25,16 @@ const Detail = ({ movieId }) => {
 
 
   return (
-    <DetailPost 
-      detailResults={detailResults}
-      imageResults={imageResults}
-      creditsResults={creditsResults}
-    />
+    <>
+      {
+        isLoaded 
+        ? <DetailPost 
+          detailResults={detailResults}
+          imageResults={imageResults}
+          creditsResults={creditsResults} />
+        : <div>isLoading...</div>
+      }
+    </>
   );
 };
 

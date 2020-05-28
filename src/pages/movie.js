@@ -22,12 +22,15 @@ const Movie = () => {
 
   return (
     <>
-      <MoviePost 
-        isLoaded={isLoaded}
-        currentResults={currentResults}
-        upcompingResults={upcompingResults}
-        popularResults={popularResults}
-      />
+      {
+        isLoaded 
+        ? <MoviePost 
+            isLoaded={isLoaded}
+            currentResults={currentResults}
+            upcompingResults={upcompingResults}
+            popularResults={popularResults} /> 
+        : <div>isLoading..</div>
+      }
     </>
   );
 };
