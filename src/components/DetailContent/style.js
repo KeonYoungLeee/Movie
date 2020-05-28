@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PosterSection = styled.div`
 
   display: flex;
+  margin-bottom: 4rem;
 
   & img {
     width: 300px;
