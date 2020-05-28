@@ -45,15 +45,9 @@ export const PropfileWrapper = styled.div`
   text-align: center;
 `;
 
-export const PropfileDisplay = styled.div`
-  display: flex;
-`;
-
 export const PropfileContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 1rem;
-  width: 172px;
 
   & img {
     width: 100px;

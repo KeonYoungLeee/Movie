@@ -9,7 +9,7 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
     slidesPerView: 3,
     spaceBetween: 30,
     pagination: {
-      clickable: true,
+      clickable: true
     },
     breakpoints: {
       768: {
@@ -18,6 +18,10 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
       1200: {
         slidesPerView: 6,
       },
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
     },
   };
 
@@ -35,26 +39,27 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
         <PropfileWrapper>
           <h2>俳優</h2>
             <Swiper {...params}>
-            <PropfileDisplay>
               {
                 creditsResults  && creditsResults.cast.map((v) => {
                   return (
-                    <>
+                    <div>
+                      <PropfileContent>
                       {v.profile_path === null
-                        ? <PropfileContent>
-                            <span>image x</span>
+                        ? 
+                          <>
+                            <img src="https://www.freeiconspng.com/uploads/no-image-icon-0.png" width="550" alt="Icon Photos No" />
                             <PropfileName>{v.name}</PropfileName>
-                          </PropfileContent>
-                        : <PropfileContent>
+                          </>
+                        : <>
                             <img src={`https://image.tmdb.org/t/p/w300/${v.profile_path}`} />
                             <PropfileName>{v.name}</PropfileName>
-                          </PropfileContent>
+                          </>
                       }
-                    </>
+                      </PropfileContent>
+                    </div>
                   );
                 })
               }
-          </PropfileDisplay>
             </Swiper>
         </PropfileWrapper>
       </ProfileSection>

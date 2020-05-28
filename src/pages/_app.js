@@ -19,6 +19,7 @@ const MovieProject = ({ Component, store, pageProps }) => {
         <title>Movie API Project</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
         <script src="https://unpkg.com/react-id-swiper@3.0.0/lib/react-id-swiper.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"></link>
       </Head>
       <AppLayout>
         <Component {...pageProps}/>
