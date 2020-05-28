@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const BackGround = styled.div`
   background-color: white;
+  padding-bottom: 0.1rem;
 `
 
 export const Wrapper = styled.div`
