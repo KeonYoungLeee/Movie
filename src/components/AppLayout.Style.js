@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 import { Row } from 'antd';
 
 export const RowSylte = styled(Row)`

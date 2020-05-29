@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
       };
     }
     case TRENDING_MOIVES_SUCCESS: {
-      const randomIdLength = parseInt(action.data.length);
+      const randomIdLength = parseInt(action.data.length, 10);
       const randomIdIndex = Math.floor(Math.random() * randomIdLength);
       const moviePosterpath = action.data[`${randomIdIndex}`].poster_path;
       const movieBackdroppath = action.data[`${randomIdIndex}`].backdrop_path;
@@ -127,12 +127,11 @@ export default (state = initialState, action) => {
         isLoaded: false,
       };
     }
-
     case DETAIL_MOVIES_REQUEST: {
       return {
         ...state,
         isLoaded: false,
-        id: action.id
+        id: action.id,
       };
     }
     case DETAIL_MOVIES_SUCCESS: {
@@ -148,12 +147,11 @@ export default (state = initialState, action) => {
         isLoaded: false,
       };
     }
-    
     case IMAGES_MOVIES_REQUEST: {
       return {
         ...state,
         isLoaded: false,
-        id: action.id
+        id: action.id,
       };
     }
     case IMAGES_MOVIES_SUCCESS: {
@@ -174,7 +172,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoaded: false,
-        id: action.id
+        id: action.id,
       };
     }
     case CREDITS_MOVIES_SUCCESS: {

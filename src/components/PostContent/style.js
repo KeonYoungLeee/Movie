@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const ContentFont = styled.div`
+const ContentFont = styled.div`
   & h2 {
     position:absolute;
     z-index:1;
@@ -12,6 +12,7 @@ export const ContentFont = styled.div`
     font-weight: bold;
     color:white;
   }
+
   & h3 {
     width: 100%;
     display:flex;
@@ -27,3 +28,4 @@ export const ContentFont = styled.div`
   
 `;
 
+export default ContentFont;

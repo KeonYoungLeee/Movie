@@ -1,6 +1,6 @@
 import React from 'react';
-import { Wrapper } from './style';
 import PropTypes from 'prop-types';
+import { Wrapper } from './style';
 import PostContent from '../../components/PostContent';
 
 const IndexPost = ({ imgSrc, title }) => {
@@ -8,7 +8,6 @@ const IndexPost = ({ imgSrc, title }) => {
     <Wrapper>
       <img src={`https://image.tmdb.org/t/p/original/${imgSrc}`} />
       <PostContent title={title} />
-      
     </Wrapper>
   );
 };

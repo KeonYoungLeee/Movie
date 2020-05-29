@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Section = styled.div`
+const Section = styled.div`
   margin-bottom: 4rem;
 `;
 
+export default Section;

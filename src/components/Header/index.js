@@ -1,24 +1,12 @@
-import React, { useState, useCallback } from 'react';
-import Link from 'next/link';
-import { BtnClick, PageCover, CloseMenu, OpenedMenu, Wrapper, Container, Background } from './style';
+import React from 'react';
 import { Input } from 'antd';
+import Link from 'next/link';
+import { Wrapper, Container, Background } from './style';
 
 const Header = () => {
 
-  const [classToggle, setClassToggle] = useState(false);
-
-  const onChangeClassToggle = useCallback((e) => {
-    setNow(e.target.value);
-  });
-
-  const onClickClassToggle = useCallback(() => {
-
-  }, []);
-
-
   return (
     <Background>
-    {/* Link페이지 : https://codepen.io/biggerbig/pen/QNayZw */}
       <Wrapper>
         <Container>
           <ul>

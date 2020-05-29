@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { DETAIL_MOVIES_REQUEST, IMAGES_MOVIES_REQUEST, CREDITS_MOVIES_REQUEST } from './../reducer/movie';
 import DetailPost from '../container/DetailPost';
+import { DETAIL_MOVIES_REQUEST, IMAGES_MOVIES_REQUEST, CREDITS_MOVIES_REQUEST } from '../reducer/movie';
 
 const Detail = ({ movieId }) => {
   const dispatch = useDispatch();
@@ -27,8 +27,7 @@ const Detail = ({ movieId }) => {
   return (
     <>
       {
-        isLoaded 
-        ? <DetailPost 
+        isLoaded ? <DetailPost 
           detailResults={detailResults}
           imageResults={imageResults}
           creditsResults={creditsResults} />
@@ -42,9 +41,8 @@ Detail.propTypes = {
   movieId: PropTypes.number.isRequired,
 };
 
-Detail.getInitialProps = async ( context ) => {
-  return { movieId : parseInt(context.query.movieId) }
+Detail.getInitialProps = async (context) => {
+  return { movieId: parseInt(context.query.movieId, 10) };
 };
 
 export default Detail;
-

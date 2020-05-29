@@ -41,4 +41,3 @@ ImagesSection.propTypes = {
 };
 
 export default ImagesSection;
-

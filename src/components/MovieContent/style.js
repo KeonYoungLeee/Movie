@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { Card, Avatar } from 'antd';
+import styled from 'styled-components';
+import { Card } from 'antd';
 
-export const CardStyle = styled(Card)`
+const CardStyle = styled(Card)`
   position: relative;
   flex-basis: 100%;
   height: 30vh;
@@ -37,3 +37,5 @@ export const CardStyle = styled(Card)`
     margin-bottom: 0;
   }
 `;
+
+export default CardStyle;

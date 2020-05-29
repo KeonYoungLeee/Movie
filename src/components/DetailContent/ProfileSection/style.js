@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   @media (min-width: 1200px) {
@@ -32,7 +32,6 @@ export const Content = styled.div`
     border-radius: 5px;
     flex: 1 1 0%;
   }
-
 `;
 
 export const Name = styled.h4`

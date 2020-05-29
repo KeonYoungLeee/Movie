@@ -5,7 +5,11 @@ import MoviePost from '../container/MoviePost';
 
 
 const Movie = () => {
-  const { isLoaded, currentResults, upcompingResults, popularResults } = useSelector(state => state.movie);
+  const {
+    isLoaded,
+    currentResults,
+    upcompingResults,
+    popularResults } = useSelector(state => state.movie);
   const dispatch = useDispatch();
 
   useEffect(() => {

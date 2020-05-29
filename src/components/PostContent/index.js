@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ContentFont } from './style';
+import ContentFont from './style';
 
 const PostContent = ({ title }) => {
   return (

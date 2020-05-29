@@ -9,8 +9,8 @@ import AppLayout from '../components/AppLayout';
 import reducer from '../reducer/index';
 import rootSaga from '../saga';
 
-import 'swiper/css/swiper.css';
 import './../components/DetailContent/ProfileSection/swiper.css';
+import 'swiper/css/swiper.css';
 
 const MovieProject = ({ Component, store, pageProps }) => {
   return (
@@ -18,11 +18,11 @@ const MovieProject = ({ Component, store, pageProps }) => {
       <Head>
         <title>Movie API Project</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
-        <script src="https://unpkg.com/react-id-swiper@3.0.0/lib/react-id-swiper.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"></link>
+        <script src="https://unpkg.com/react-id-swiper@3.0.0/lib/react-id-swiper.min.js"></script>
       </Head>
       <AppLayout>
-        <Component {...pageProps}/>
+        <Component {...pageProps} />
       </AppLayout>
     </Provider>
   );
@@ -31,7 +31,7 @@ const MovieProject = ({ Component, store, pageProps }) => {
 const configureStroe = (initalState, options) => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware];
-  const enhancer = process.env.NODE_ENV === 'production' 
+  const enhancer = process.env.NODE_ENV === 'production'
   ? compose( 
     applyMiddleware(...middlewares))
   : compose(
@@ -46,11 +46,11 @@ const configureStroe = (initalState, options) => {
 MovieProject.getInitialProps = async (context) => {
   const { ctx, Component } = context;
   let pageProps = {};
-  if ( Component.getInitialProps ) {
+  if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
   return { pageProps };
-}
+};
 
 MovieProject.propTypes = {
   Component: PropTypes.elementType.isRequired,

@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
-
-import { CardStyle } from './style';
+import CardStyle from './style';
 
 const MovieContent = ({ movies, id }) => {
-  
   const onDetail = () => {
-    Router.push({ pathname: `/detail`, query: { movieId : parseInt(id) }}, `/detail/${parseInt(id)}`);
+    Router.push({ pathname: '/detail', query: { movieId: parseInt(id, 10) }}, `/detail/${parseInt(id, 10)}`);
   };
 
   return (
@@ -17,7 +15,7 @@ const MovieContent = ({ movies, id }) => {
         onClick={onDetail}
         path={movies.poster_path}
       >
-        <p>{movies.title}</p>\
+        <p>{movies.title}</p>
       </CardStyle>
     </>
   );

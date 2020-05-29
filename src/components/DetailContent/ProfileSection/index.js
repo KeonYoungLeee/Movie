@@ -43,4 +43,3 @@ ProfileSection.propTypes = {
 };
 
 export default ProfileSection;
-

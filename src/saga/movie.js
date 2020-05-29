@@ -1,14 +1,14 @@
 import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
-import { 
-  CURRENT_MOVIES_SUCCESS, 
-  CURRENT_MOVIES_FAILURE, 
-  CURRENT_MOVIES_REQUEST, 
-  TRENDING_MOIVES_SUCCESS, 
-  TRENDING_MOIVES_FAILURE, 
-  TRENDING_MOIVES_REQUEST, 
-  UPCOMPING_MOIVES_FAILURE, 
-  UPCOMPING_MOIVES_SUCCESS, 
-  UPCOMPING_MOIVES_REQUEST, 
+import {
+  CURRENT_MOVIES_SUCCESS,
+  CURRENT_MOVIES_FAILURE,
+  CURRENT_MOVIES_REQUEST,
+  TRENDING_MOIVES_SUCCESS,
+  TRENDING_MOIVES_FAILURE,
+  TRENDING_MOIVES_REQUEST,
+  UPCOMPING_MOIVES_FAILURE,
+  UPCOMPING_MOIVES_SUCCESS,
+  UPCOMPING_MOIVES_REQUEST,
   POPULAR_MOIVES_SUCCESS,
   POPULAR_MOIVES_FAILURE,
   POPULAR_MOIVES_REQUEST,
@@ -20,12 +20,13 @@ import {
   IMAGES_MOVIES_SUCCESS,
   CREDITS_MOVIES_REQUEST,
   CREDITS_MOVIES_FAILURE,
-  CREDITS_MOVIES_SUCCESS
+  CREDITS_MOVIES_SUCCESS,
 } from '../reducer/movie';
+
 import axios from 'axios';
 import { API_KEY, LANGUAGE } from './index';
 
-function trendingMoivesAPI () {
+function trendingMoivesAPI() {
   return axios.get(`/trending/movie/week?api_key=${API_KEY}&${LANGUAGE}`);
 }
 
@@ -40,7 +41,7 @@ function* trendingMoives() {
     console.error(error);
     yield put({
       type: TRENDING_MOIVES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
@@ -49,7 +50,7 @@ function* watchTrendingMoives() {
   yield takeLatest(TRENDING_MOIVES_REQUEST, trendingMoives)
 }
 
-function currentMoviesAPI () {
+function currentMoviesAPI() {
   return axios.get(`/movie/now_playing?api_key=${API_KEY}&${LANGUAGE}`);
 }
 
@@ -64,16 +65,16 @@ function* currentMovies() {
     console.error(error);
     yield put({
       type: CURRENT_MOVIES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
 
 function* watchCurrentMovies() {
-  yield takeLatest(CURRENT_MOVIES_REQUEST, currentMovies)
+  yield takeLatest(CURRENT_MOVIES_REQUEST, currentMovies);
 }
 
-function upcomingMoivesAPI () {
+function upcomingMoivesAPI() {
   return axios.get(`/movie/upcoming?api_key=${API_KEY}&${LANGUAGE}`);
 }
 
@@ -88,16 +89,16 @@ function* upcomingMoives() {
     console.error(error);
     yield put({
       type: UPCOMPING_MOIVES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
 
 function* watchUpcomingMoives() {
-  yield takeLatest(UPCOMPING_MOIVES_REQUEST, upcomingMoives)
+  yield takeLatest(UPCOMPING_MOIVES_REQUEST, upcomingMoives);
 }
 
-function popularMoviesAPI () {
+function popularMoviesAPI() {
   return axios.get(`/movie/popular?api_key=${API_KEY}&${LANGUAGE}`);
 }
 
@@ -112,16 +113,16 @@ function* popularMovies() {
     console.error(error);
     yield put({
       type: POPULAR_MOIVES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
 
 function* watchPopularMovies() {
-  yield takeLatest(POPULAR_MOIVES_REQUEST, popularMovies)
+  yield takeLatest(POPULAR_MOIVES_REQUEST, popularMovies);
 }
 
-function detailMoviesAPI (movieId) {
+function detailMoviesAPI(movieId) {
   // return axios.get(`/movie/${movieId}?api_key=${API_KEY}&${LANGUAGE}`);
   return axios.get(`/movie/${movieId}?api_key=${API_KEY}`);
 }
@@ -137,16 +138,16 @@ function* detailMovies(action) {
     console.error(error);
     yield put({
       type: DETAIL_MOVIES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
 
 function* watchDetailMovies() {
-  yield takeLatest(DETAIL_MOVIES_REQUEST, detailMovies)
+  yield takeLatest(DETAIL_MOVIES_REQUEST, detailMovies);
 }
 
-function imageMoviesAPI (movieId) {
+function imageMoviesAPI(movieId) {
   return axios.get(`/movie/${movieId}/images?api_key=${API_KEY}`);
 }
 
@@ -161,16 +162,16 @@ function* imageMovies(action) {
     console.error(error);
     yield put({
       type: IMAGES_MOVIES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
 
 function* watchimageMovies() {
-  yield takeLatest(IMAGES_MOVIES_REQUEST, imageMovies)
+  yield takeLatest(IMAGES_MOVIES_REQUEST, imageMovies);
 }
 
-function creditsMoviesAPI (movieId) {
+function creditsMoviesAPI(movieId) {
   return axios.get(`/movie/${movieId}/credits?api_key=${API_KEY}`);
 }
 
@@ -185,15 +186,14 @@ function* creditsMovies(action) {
     console.error(error);
     yield put({
       type: CREDITS_MOVIES_FAILURE,
-      error: error,
+      error,
     });
   }
 }
 
 function* watchcreditsMovies() {
-  yield takeLatest(CREDITS_MOVIES_REQUEST, creditsMovies)
+  yield takeLatest(CREDITS_MOVIES_REQUEST, creditsMovies);
 }
-
 
 export default function* movieSaga() {
   yield all([
@@ -206,4 +206,3 @@ export default function* movieSaga() {
     fork(watchcreditsMovies),
   ]);
 }
-

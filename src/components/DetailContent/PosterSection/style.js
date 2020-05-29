@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   margin-bottom: 4rem;
 
@@ -23,5 +23,6 @@ export const Content = styled.div`
   & h3 {
     font-size: 1.4em;
   }
-
 `;
+
+export default Content;

@@ -58,7 +58,6 @@ export const MovieLayoutList = styled.div`
   }
 `;
 
-
 export const ResponsiveButton = styled.button`
   padding: 13px 60px 15px 60px;
   font-size: 1.7rem;
@@ -74,7 +73,6 @@ export const MovieCardLayout = styled.div`
   justify-content: flex-start;
   flex-flow: row wrap;
 `;
-
 
 export const MovieCard = styled.div`
 

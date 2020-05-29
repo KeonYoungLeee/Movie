@@ -1,14 +1,13 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled from 'styled-components';
-import { Card, Avatar } from 'antd';
-import { useDispatch } from 'react-redux';
+import { Card } from 'antd';
 
 const MovieList = ({ movies, id }) => {
 
   const onDetail = () => {
-    Router.push({ pathname: `/detail`, query: { movieId : parseInt(id) }}, `/detail/${parseInt(id)}`);
+    Router.push({ pathname: '/detail', query: { movieId: parseInt(id, 10) }}, `/detail/${parseInt(id, 10)}`);
   };
 
   const CardList = styled(Card)`
@@ -23,11 +22,9 @@ const MovieList = ({ movies, id }) => {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    ${ movies.poster_path 
-      ?
-      `background: url(https://image.tmdb.org/t/p/original/${movies.poster_path}) center center / cover no-repeat;` 
-      :
-      `background: url();`
+    ${ movies.poster_path
+      ? `background: url(https://image.tmdb.org/t/p/original/${movies.poster_path}) center center / cover no-repeat;` 
+      : `background: url();` 
     }
     &:after {
       content: "";
@@ -46,15 +43,15 @@ const MovieList = ({ movies, id }) => {
       font-size : 1.3em;
       margin-bottom: 0;
     }
-  `
+  `;
 
   return (
     <>
-      <CardList 
+      <CardList
         bodyStyle={{ padding: '5px', }}
         onClick={onDetail}
       >
-        <p>{movies.title}</p>\
+        <p>{movies.title}</p>
       </CardList>
     </>
   );

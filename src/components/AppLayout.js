@@ -1,7 +1,7 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Col } from 'antd';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
+import Header from './Header';
 import { RowSylte } from './AppLayout.Style';
 
 const AppLayout = ({ children }) => {

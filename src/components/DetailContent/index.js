@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import PosterSection from './PosterSection';
 import ProfileSection from './ProfileSection';
 import ImagesSection from './ImagesSection';
-import { Section } from './style';
+import Section from './style';
 
 const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
-  
+
   const params = {
     slidesPerView: 3,
     spaceBetween: 30,
     pagination: {
-      clickable: true
+      clickable: true,
     },
     breakpoints: {
       768: {
@@ -33,9 +33,8 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
         <ProfileSection results={creditsResults} params={params} />
       </Section>
       <Section>
-        <ImagesSection  results={imageResults} params={params} />
+        <ImagesSection results={imageResults} params={params} />
       </Section>
-      
     </div>
   );
 };
@@ -43,6 +42,7 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
 DetailContent.propTypes = {
   detailResults: PropTypes.object.isRequired,
   imageResults: PropTypes.object.isRequired,
+  creditsResults: PropTypes.object.isRequired,
 };
 
 export default DetailContent;
