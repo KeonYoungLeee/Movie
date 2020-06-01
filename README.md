@@ -33,9 +33,12 @@ TMDB(The Movie DataBase)はReactプロジェクトでAPIを活用して映画検
 <br>
 
 ### 追加する項目
-- [ ]  レスポンシブウェブデザイン
+- [x]  レスポンシブウェブデザイン
+- [x]  Redux, Redux-saga適応
+- [x]  Nextでページ構成
+- [x]  Style Component
+
 - [ ]  検索機能
 - [ ]  UI/UXテスト
-- [ ]  TypeScript適用
-- [ ]  Server Side Rendering(SSR)
-- [ ]  他のAPI追加
+
+
