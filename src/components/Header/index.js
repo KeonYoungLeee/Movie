@@ -12,7 +12,6 @@ const Header = () => {
           <ul>
             <li key="home"><Link href="/">ホーム</Link></li>
             <li key="movie"><Link href="/movie">映画</Link></li>
-            <li key="tv"><Link href="/tv">テレビ</Link></li>
           </ul>
           <ul>
             <li key="search">
