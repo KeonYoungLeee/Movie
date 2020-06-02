@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import DetailPost from '../container/DetailPost';
-import { DETAIL_MOVIES_REQUEST, IMAGES_MOVIES_REQUEST, CREDITS_MOVIES_REQUEST } from '../reducer/movie';
+import { DETAIL_MOVIES_REQUEST, IMAGES_MOVIES_REQUEST, CREDITS_MOVIES_REQUEST, VIDEOS_MOVIES_REQUEST } from '../reducer/movie';
 
 const Detail = ({ movieId }) => {
   const dispatch = useDispatch();
-  const { isLoaded, detailResults, imageResults, creditsResults } = useSelector(state => state.movie);
+  const { isLoaded, detailResults, imageResults, creditsResults, videosResults } = useSelector(state => state.movie);
 
   useEffect(() => {
     dispatch({
@@ -21,16 +21,22 @@ const Detail = ({ movieId }) => {
       type: CREDITS_MOVIES_REQUEST,
       movieId,
     });
+    dispatch({
+      type: VIDEOS_MOVIES_REQUEST,
+      movieId,
+    });
   }, [movieId]);
 
 
   return (
     <>
       {
-        isLoaded ? <DetailPost 
-          detailResults={detailResults}
-          imageResults={imageResults}
-          creditsResults={creditsResults} />
+        isLoaded 
+        ? <DetailPost 
+            detailResults={detailResults}
+            imageResults={imageResults}
+            creditsResults={creditsResults} 
+            videosResults={videosResults} />
         : <div>isLoading...</div>
       }
     </>

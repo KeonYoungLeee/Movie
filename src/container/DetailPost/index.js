@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Wrapper, BackGround, BackgroundImageSection, WrapperDetailContent } from './style';
 import DetailContent from '../../components/DetailContent';
 
-const DetailPost = ({ detailResults, imageResults, creditsResults }) => {
+const DetailPost = ({ detailResults, imageResults, creditsResults, videosResults }) => {
   return (
     <BackGround>
       <Wrapper>
@@ -14,7 +14,8 @@ const DetailPost = ({ detailResults, imageResults, creditsResults }) => {
         <DetailContent 
           detailResults={detailResults} 
           imageResults={imageResults} 
-          creditsResults={creditsResults} />
+          creditsResults={creditsResults}
+          videosResults={videosResults} />
       </WrapperDetailContent>
     </BackGround>
   );
@@ -24,6 +25,7 @@ DetailPost.propTypes = {
   detailResults: PropTypes.object.isRequired,
   imageResults: PropTypes.object.isRequired,
   creditsResults: PropTypes.object.isRequired,
+  videosResults: PropTypes.object.isRequired,
 };
 
 export default DetailPost;

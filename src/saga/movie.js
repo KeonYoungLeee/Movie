@@ -21,6 +21,9 @@ import {
   CREDITS_MOVIES_REQUEST,
   CREDITS_MOVIES_FAILURE,
   CREDITS_MOVIES_SUCCESS,
+  VIDEOS_MOVIES_SUCCESS,
+  VIDEOS_MOVIES_FAILURE,
+  VIDEOS_MOVIES_REQUEST,
 } from '../reducer/movie';
 
 import axios from 'axios';
@@ -195,6 +198,30 @@ function* watchcreditsMovies() {
   yield takeLatest(CREDITS_MOVIES_REQUEST, creditsMovies);
 }
 
+function videosMoviesAPI(movieId) {
+  return axios.get(`/movie/${movieId}/videos?api_key=${API_KEY}`);
+}
+
+function* videosMovies(action) {
+  try {
+    const result = yield call(videosMoviesAPI, action.movieId);
+    yield put({
+      type: VIDEOS_MOVIES_SUCCESS,
+      videosdata: result.data,
+    });
+  } catch (error) {
+    console.error(error);
+    yield put({
+      type: VIDEOS_MOVIES_FAILURE,
+      error,
+    });
+  }
+}
+
+function* watchVideosMovies() {
+  yield takeLatest(VIDEOS_MOVIES_REQUEST, videosMovies);
+}
+
 export default function* movieSaga() {
   yield all([
     fork(watchCurrentMovies),
@@ -204,5 +231,6 @@ export default function* movieSaga() {
     fork(watchDetailMovies),
     fork(watchimageMovies),
     fork(watchcreditsMovies),
+    fork(watchVideosMovies),
   ]);
 }

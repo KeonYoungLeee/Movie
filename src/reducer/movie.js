@@ -6,6 +6,7 @@ export const initialState = {
   detailResults: {},
   imageResults: {},
   creditsResults: {},
+  videosResults: {},
   isLoading: false,
   isLoaded: false,
 };
@@ -38,6 +39,10 @@ export const IMAGES_MOVIES_FAILURE = 'IMAGES_MOVIES_FAILURE';
 export const CREDITS_MOVIES_REQUEST = 'CREDITS_MOVIES_REQUEST';
 export const CREDITS_MOVIES_SUCCESS = 'CREDITS_MOVIES_SUCCESS';
 export const CREDITS_MOVIES_FAILURE = 'CREDITS_MOVIES_FAILURE';
+
+export const VIDEOS_MOVIES_REQUEST = 'VIDEOS_MOVIES_REQUEST';
+export const VIDEOS_MOVIES_SUCCESS = 'VIDEOS_MOVIES_SUCCESS';
+export const VIDEOS_MOVIES_FAILURE = 'VIDEOS_MOVIES_FAILURE';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -130,8 +135,7 @@ export default (state = initialState, action) => {
     case DETAIL_MOVIES_REQUEST: {
       return {
         ...state,
-        isLoaded: false,
-        id: action.id,
+        isLoaded: false
       };
     }
     case DETAIL_MOVIES_SUCCESS: {
@@ -183,6 +187,27 @@ export default (state = initialState, action) => {
       };
     }
     case CREDITS_MOVIES_FAILURE: {
+      return {
+        ...state,
+        isLoaded: false,
+      };
+    }
+
+    case VIDEOS_MOVIES_REQUEST: {
+      return {
+        ...state,
+        isLoaded: false,
+        id: action.id,
+      };
+    }
+    case VIDEOS_MOVIES_SUCCESS: {
+      return {
+        ...state,
+        videosResults: action.videosdata,
+        isLoaded: true,
+      };
+    }
+    case VIDEOS_MOVIES_FAILURE: {
       return {
         ...state,
         isLoaded: false,

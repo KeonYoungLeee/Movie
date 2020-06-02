@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import PosterSection from './PosterSection';
 import ProfileSection from './ProfileSection';
 import ImagesSection from './ImagesSection';
+import VideoSection from './VideoSection';
 import Section from './style';
 
-const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
+const DetailContent = ({ detailResults, imageResults, creditsResults, videosResults }) => {
 
   const params = {
     slidesPerView: 3,
@@ -35,6 +36,9 @@ const DetailContent = ({ detailResults, imageResults, creditsResults }) => {
       <Section>
         <ImagesSection results={imageResults} params={params} />
       </Section>
+      <Section>
+        <VideoSection results={videosResults} params={params} />
+      </Section>
     </div>
   );
 };
@@ -43,6 +47,7 @@ DetailContent.propTypes = {
   detailResults: PropTypes.object.isRequired,
   imageResults: PropTypes.object.isRequired,
   creditsResults: PropTypes.object.isRequired,
+  videosResults: PropTypes.object.isRequired,
 };
 
 export default DetailContent;
