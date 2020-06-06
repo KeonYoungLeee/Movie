@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
+import { Wrapper } from './style';
 
 
 const VideoSection = ({ results, params }) => {
 
   return (
-    <>
-      {
-        results.results  && results.results.map((v) => {
-          console.log(v);
-          <img src={`https://www.youtube.com/watch?${v.key}=SUXWAEX2jlg`} />
-        })
-      }
-    </>
+    <Wrapper>
+      <h2>動画</h2>
+      
+    </Wrapper>
   );
 };
 

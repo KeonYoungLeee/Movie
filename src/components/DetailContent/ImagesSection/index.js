@@ -11,7 +11,7 @@ const ImagesSection = ({ results, params }) => {
           <h2>写真</h2>
           <Swiper {...params}>
               {
-                results  && results.backdrops.map((v) => {
+                results && results.backdrops.length > 0 && results.backdrops.map((v) => {
                   return (
                     <div>
                       <Content>

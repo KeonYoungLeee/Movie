@@ -7,7 +7,7 @@ import ImagesSection from './ImagesSection';
 import VideoSection from './VideoSection';
 import Section from './style';
 
-const DetailContent = ({ detailResults, imageResults, creditsResults, videosResults }) => {
+const DetailContent = ({ detailResults, creditsResults, imageResults, videosResults }) => {
 
   const params = {
     slidesPerView: 3,

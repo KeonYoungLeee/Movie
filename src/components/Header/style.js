@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Input} from 'antd';
 
 export const Background = styled.div`
   background-color: black;
@@ -51,56 +52,15 @@ export const Container = styled.div`
   }
 `;
 
-export const BtnClick = styled.div`
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 1;
-  background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/menu.png");
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-`;
-
-export const PageCover = styled.div`
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 4;
-  display: none;
-`;
-
-export const OpenedMenu = styled.div`
-  width: 150px;
-  height: 100%;
-  position: fixed;
-  top: 0px;
-  right: -152px;
-  z-index: 10;
-  border: 1px solid #c9c9c9;
-  background-color: white;
-  text-align: center;
-  transition: All 0.2s ease;
-  -webkit-transition: All 0.2s ease;
-  -moz-transition: All 0.2s ease;
-  -o-transition: All 0.2s ease;
-`;
-
-export const CloseMenu = styled.div`
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  background-image: url("http://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png");
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
+export const InputSearch = styled(Input)`
+  background-color: black;
+  & span {
+    & span {
+      & button {
+        background-color: black;
+    
+      }
+    }
+    
+  }
 `;

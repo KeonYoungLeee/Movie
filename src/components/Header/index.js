@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from 'antd';
 import Link from 'next/link';
-import { Wrapper, Container, Background } from './style';
+import { Wrapper, Container, Background, InputSearch } from './style';
 
 const Header = () => {
 
@@ -15,7 +15,7 @@ const Header = () => {
           </ul>
           <ul>
             <li key="search">
-              <Input.Search enterButton style={{ verticalAlign: 'middle' }} />
+              <InputSearch.Search enterButton style={{ verticalAlign: 'middle' }} />
             </li>
           </ul>
           <ul>
