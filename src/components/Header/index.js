@@ -1,26 +1,28 @@
-import React from 'react';
-import { Input } from 'antd';
-import Link from 'next/link';
-import { Wrapper, Container, Background, InputSearch } from './style';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Wrapper, Container, Background } from './style';
+import VerticalBox from './VerticalBox';
 
 const Header = () => {
+
+  const [isRealSize, setIsRealSize] = useState(false);
+
+  const onRealSize = useCallback(() => {
+    setIsRealSize(window.innerWidth < 450);
+  }, [isRealSize]);
+
+  useEffect(() => {
+    onRealSize();
+    window.addEventListener('resize', onRealSize);
+    return () => {
+      window.removeEventListener('resize', onRealSize);
+    }
+  }, [onRealSize]);
 
   return (
     <Background>
       <Wrapper>
         <Container>
-          <ul>
-            <li key="home"><Link href="/">ホーム</Link></li>
-            <li key="movie"><Link href="/movie">映画</Link></li>
-          </ul>
-          <ul>
-            <li key="search">
-              <InputSearch.Search enterButton style={{ verticalAlign: 'middle' }} />
-            </li>
-          </ul>
-          <ul>
-            <li key="about"><Link href="/about">その他</Link></li>
-          </ul>
+          { isRealSize ? <HorizonBox /> : <VerticalBox /> }
         </Container>
       </Wrapper>
     </Background>
