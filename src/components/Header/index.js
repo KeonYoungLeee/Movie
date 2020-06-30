@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Wrapper, Container, Background } from './style';
 import VerticalBox from './VerticalBox';
+import HorizonBox from './HorizonBox';
 
 const Header = () => {
 
   const [isRealSize, setIsRealSize] = useState(false);
 
   const onRealSize = useCallback(() => {
-    setIsRealSize(window.innerWidth < 450);
+    setIsRealSize(window.innerWidth < 560);
   }, [isRealSize]);
 
   useEffect(() => {
@@ -21,9 +22,7 @@ const Header = () => {
   return (
     <Background>
       <Wrapper>
-        <Container>
           { isRealSize ? <HorizonBox /> : <VerticalBox /> }
-        </Container>
       </Wrapper>
     </Background>
   );

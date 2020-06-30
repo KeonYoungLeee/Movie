@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: black;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   padding: 1.2rem 0rem 1.2rem 0rem;
 `;
 
@@ -16,11 +16,15 @@ export const List = styled.div`
   & li {
     list-style: none;
     display: inline-block;
-    font-size: 3.3vw;
+    font-size: 1.5rem;
     padding: 0px 20px 0px 20px;
 
     & input {
-      font-size: 2.5vw;
+      font-size: 1.2rem;
+    }
+
+    & a {
+      color: white;
     }
   }
 `;
