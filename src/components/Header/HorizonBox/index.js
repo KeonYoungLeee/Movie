@@ -19,6 +19,10 @@ const HorizonBox = () => {
     setSearchToggle(searchToggle === false ? true : false);
   }, [searchToggle]);
 
+  const onLinkClick = useCallback(() => {
+    setToggle(false)
+  }, [toggle])
+
   const onChangeSearchInput = useCallback((event) => {
     setSearchInput(event.target.value);
   });
@@ -67,9 +71,9 @@ const HorizonBox = () => {
           <Menu ref={currentRef} open={toggle}>
             <CloseBtn onClick={onClickToogle} />
             <List hoverEvent>
-              <li key="home"><Link href="/">ホーム</Link></li>
-              <li key="movie"><Link href="/movie">映画</Link></li>
-              <li key="about"><Link href="/about">その他</Link></li>
+              <li key="home" onClick={onLinkClick} ><Link href="/">ホーム</Link></li>
+              <li key="movie" onClick={onLinkClick} ><Link href="/movie">映画</Link></li>
+              <li key="about" onClick={onLinkClick} ><Link href="/about">その他</Link></li>
             </List>
           </Menu>
         ) : (
