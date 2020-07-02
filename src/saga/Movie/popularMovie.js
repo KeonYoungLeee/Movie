@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
-import { API_KEY } from './../index';
+import { API_KEY, LANGUAGE } from './../index';
 import { 
   POPULAR_MOIVES_REQUEST, 
   POPULAR_MOIVES_SUCCESS, 
