@@ -1,8 +1,23 @@
-import React, { useState, useCallback} from 'react';
-import { MovieLayoutList, MovieCardLayout, MovieCard, Wrapper, ResponsiveButton } from './style';
+import React, { useState, useCallback, useEffect} from 'react';
+import { MovieCardLayout, MovieCard, Wrapper, Background } from './style';
 import MovieContent from '../../components/MovieContent';
+import MovieButtonList from '../../components/MovieButtonList';
+import { useSelector, useDispatch } from 'react-redux';
+import { CURRENT_MOVIES_REQUEST } from '../../reducer/movie/currentMovie';
+import { UPCOMPING_MOIVES_REQUEST } from '../../reducer/Movie/upcomingMovie';
+import { POPULAR_MOIVES_REQUEST } from '../../reducer/Movie/popularMovie';
 
-const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults }) => {
+const MoviePost = () => {
+
+  // Current currentResults
+  // Upcoming upcompingResults
+  // Popular popularResults
+
+  const { currentResults } = useSelector(state => state.movieData.Current);
+  const { upcompingResults } = useSelector(state => state.movieData.Upcoming);
+  const { popularResults } = useSelector(state => state.movieData.Popular);
+  
+  const dispatch = useDispatch();
 
   const [now, setNow] = useState(true);
   const [current, setCurrent] = useState(false);
@@ -36,74 +51,75 @@ const MoviePost = ({ isLoaded, currentResults, upcompingResults, popularResults 
     setPopular(true);
   }, [now, current, popular]);
 
+  
+
+  useEffect(() => {
+    dispatch({
+      type: CURRENT_MOVIES_REQUEST,
+    });
+    dispatch({
+      type: UPCOMPING_MOIVES_REQUEST,
+    });
+    dispatch({
+      type: POPULAR_MOIVES_REQUEST,
+    });
+  }, []);
+
 
   return (
+    <Background>
     <Wrapper>
       {
         <>
-          <MovieLayoutList>
-            { now 
-              ? <ResponsiveButton>上映中</ResponsiveButton>
-              : <button onClick={onClickNow} value={now} onChange={onChangeNow} >上映中</button>
-            }
-            {
-              current
-              ? <ResponsiveButton>上映予定</ResponsiveButton>
-              : <button onClick={onClickCurrent} value={current} onChange={onChangeCurrent} >上映予定</button>
-            
-            }
-            {
-              popular
-              ? <ResponsiveButton>人気</ResponsiveButton>
-              : <button onClick={onClickPopular} value={popular} onChange={onChangePopular} >人気</button>
-            }
-          </MovieLayoutList>
+          <MovieButtonList 
+            now={now} onChangeNow={onChangeNow} onClickNow={onClickNow}
+            current={current} onChangeCurrent={onChangeCurrent} onClickCurrent={onClickCurrent}
+            popular={popular} onChangePopular={onChangePopular} onClickPopular={onClickPopular} />
           {
-            isLoaded ? 
-              now && (
-                <>
-                  <MovieCardLayout>
-                    {currentResults && currentResults.length > 0 && currentResults.map(movies => {
-                      return (
-                        <MovieCard>
-                          <MovieContent key={movies.id} movies={movies} id={movies.id} />
-                        </MovieCard>
-                      );
-                    })}
-                  </MovieCardLayout>
-                </>
-              )
-              || current && (
-                <>
-                  <MovieCardLayout>
-                    {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
-                      return (
-                        <MovieCard>
-                          <MovieContent key={movies.id} movies={movies} id={movies.id} />
-                        </MovieCard>
-                      );
-                    })}
-                  </MovieCardLayout>
-                </>
-              )
-              || popular && (
-                <>
-                  <MovieCardLayout>
-                    {popularResults && popularResults.length > 0 && popularResults.map(movies => {
-                      return (
-                        <MovieCard>
-                          <MovieContent key={movies.id} movies={movies} id={movies.id} />
-                        </MovieCard>
-                      );
-                    })}
-                  </MovieCardLayout>
-                </>
-              )
-            : <div>isLoading...</div>
+            now && (
+              <>
+                <MovieCardLayout>
+                  {currentResults && currentResults.length > 0 && currentResults.map(movies => {
+                    return (
+                      <MovieCard>
+                        <MovieContent key={movies.id} movies={movies} id={movies.id} />
+                      </MovieCard>
+                    );
+                  })}
+                </MovieCardLayout>
+              </>
+            )
+            || current && (
+              <>
+                <MovieCardLayout>
+                  {upcompingResults && upcompingResults.length > 0 && upcompingResults.map(movies => {
+                    return (
+                      <MovieCard>
+                        <MovieContent key={movies.id} movies={movies} id={movies.id} />
+                      </MovieCard>
+                    );
+                  })}
+                </MovieCardLayout>
+              </>
+            )
+            || popular && (
+              <>
+                <MovieCardLayout>
+                  {popularResults && popularResults.length > 0 && popularResults.map(movies => {
+                    return (
+                      <MovieCard>
+                        <MovieContent key={movies.id} movies={movies} id={movies.id} />
+                      </MovieCard>
+                    );
+                  })}
+                </MovieCardLayout>
+              </>
+            )
           }
         </>
       }
     </Wrapper>
+    </Background>
   )
 };
 
