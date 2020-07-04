@@ -9,10 +9,6 @@ import { POPULAR_MOIVES_REQUEST } from '../../reducer/Movie/popularMovie';
 
 const MoviePost = () => {
 
-  // Current currentResults
-  // Upcoming upcompingResults
-  // Popular popularResults
-
   const { currentResults } = useSelector(state => state.movieData.Current);
   const { upcompingResults } = useSelector(state => state.movieData.Upcoming);
   const { popularResults } = useSelector(state => state.movieData.Popular);

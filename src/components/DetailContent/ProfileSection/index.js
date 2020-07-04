@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import { Wrapper, Content, Name } from './style';
 
 
 const ProfileSection = ({ results, params }) => {
+
   return (
     <>
       <Wrapper>

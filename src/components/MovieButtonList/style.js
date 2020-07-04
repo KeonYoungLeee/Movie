@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MovieLayoutList = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 2rem;
+  padding-top: 2rem;
   margin-bottom: 2rem;
 
   & button {

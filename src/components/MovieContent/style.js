@@ -4,7 +4,7 @@ import { Card } from 'antd';
 const CardStyle = styled(Card)`
   position: relative;
   flex-basis: 100%;
-  height: 30vh;
+  height: 15vw;
   margin-bottom: 3px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 3px 0px;
   cursor: pointer;
@@ -19,6 +19,11 @@ const CardStyle = styled(Card)`
     :
     `background: url();`
   }
+
+  @media (max-width: 766px) {
+    height: 40vw;
+  }
+
   &:after {
     content: "";
     position: absolute;
@@ -34,7 +39,8 @@ const CardStyle = styled(Card)`
     z-index: 1;
     color : white;
     font-size : 1.3em;
-    margin-bottom: 0;
+    margin-bottom: 2.2rem;
+    text-align: center;
   }
 `;
 
