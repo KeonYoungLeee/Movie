@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, BackGround, BackgroundImageSection, WrapperDetailContent } from './style';
 import DetailContent from '../../components/DetailContent';
 
-const DetailPost = ({ detailResults, imageResults, creditsResults, videosResults }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { Wrapper, BackGround, BackgroundImageSection, WrapperDetailContent } from './style';
+import { DETAIL_MOVIES_REQUEST } from '../../reducer/movie/detailMovie';
+
+const DetailPost = ({ movieId }) => {
+  
+  const { Detail } = useSelector(state => state.movieData);
+  const { isLoading, isLoaded } = useSelector(state => state.movieData.Detail);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: DETAIL_MOVIES_REQUEST,
+      movieId,
+    });
+  }, [ ]);
+  
   return (
-    <BackGround>
-      <Wrapper>
-        <BackgroundImageSection 
-          backdropPath={detailResults.backdrop_path}/>
-      </Wrapper>
-      <WrapperDetailContent>
-        <DetailContent 
-          detailResults={detailResults} 
-          imageResults={imageResults} 
-          creditsResults={creditsResults}
-          videosResults={videosResults} />
-      </WrapperDetailContent>
-    </BackGround>
+    <>
+      {
+        <BackGround>
+          <Wrapper>
+            {
+              Detail && Detail.detailResults && Detail.detailResults.backdrop_path ? 
+              <BackgroundImageSection 
+                backdropPath={Detail.detailResults.backdrop_path}/>
+              : <div>loadingloadingloadingloadingloadingloadingloading</div>
+            }
+            </Wrapper>
+            <WrapperDetailContent>
+              <DetailContent movieId={movieId} Detail={Detail} />
+            </WrapperDetailContent>
+          </BackGround>
+        // : <div>Loading...</div>
+      }
+    </>
+    
   );
 };
 
 DetailPost.propTypes = {
-  detailResults: PropTypes.object.isRequired,
-  imageResults: PropTypes.object.isRequired,
-  creditsResults: PropTypes.object.isRequired,
-  videosResults: PropTypes.object.isRequired,
+  movieId: PropTypes.number.isRequired,
 };
 
 export default DetailPost;

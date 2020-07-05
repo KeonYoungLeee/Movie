@@ -13,7 +13,7 @@ const MovieContent = ({ movies, id }) => {
       <CardStyle 
         bodyStyle={{ padding: '5px', }}
         onClick={onDetail}
-        path={movies.poster_path}
+        path={movies.backdrop_path}
       >
         <p>{movies.title}</p>
       </CardStyle>
