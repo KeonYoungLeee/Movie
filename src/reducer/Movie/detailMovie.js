@@ -4,6 +4,8 @@ export const initialState = {
   detailResults: {},
   isLoading: false,
   isLoaded: false,
+  titleLength: 0,
+  genres: [],
 };
 
 export const DETAIL_MOVIES_REQUEST = 'DETAIL_MOVIES_REQUEST';
@@ -19,9 +21,12 @@ export default (state = initialState, action) => {
         break;
       }
       case DETAIL_MOVIES_SUCCESS: {
+        const titleLength = action.detaildata.title.length;
         draft.isLoading = true;
         draft.isLoaded = false;
         draft.detailResults = action.detaildata;
+        draft.titleLength = titleLength;
+        draft.genres = genres;
         break;
       }
       case DETAIL_MOVIES_FAILURE: {

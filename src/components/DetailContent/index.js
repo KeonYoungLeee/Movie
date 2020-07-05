@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import PosterSection from './PosterSection';
 import ProfileSection from './ProfileSection';
 import ImagesSection from './ImagesSection';
 import VideoSection from './VideoSection';
 import Section from './style';
 
-const DetailContent = ({ detailResults, creditsResults, imageResults, videosResults }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { IMAGES_MOVIES_REQUEST } from '../../reducer/Movie/imagesMovie';
+import { CREDITS_MOVIES_REQUEST } from '../../reducer/Movie/creditsMovie';
+import { VIDEOS_MOVIES_REQUEST } from '../../reducer/Movie/videosMovie';
+
+const DetailContent = ({ movieId, Detail }) => {
+
+  const { Credits, Images, Videos } = useSelector(state => state.movieData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: IMAGES_MOVIES_REQUEST,
+      movieId,
+    });
+    dispatch({
+      type: CREDITS_MOVIES_REQUEST,
+      movieId,
+    });
+    dispatch({
+      type: VIDEOS_MOVIES_REQUEST,
+      movieId,
+    });
+  }, []);
 
   const params = {
     slidesPerView: 3,
@@ -28,9 +50,9 @@ const DetailContent = ({ detailResults, creditsResults, imageResults, videosResu
   return (
     <div>
       <Section>
-        <PosterSection results={detailResults} />
+        <PosterSection results={Detail} movieId={movieId} />
       </Section>
-      <Section>
+      {/* <Section>
         <ProfileSection results={creditsResults} params={params} />
       </Section>
       <Section>
@@ -38,16 +60,14 @@ const DetailContent = ({ detailResults, creditsResults, imageResults, videosResu
       </Section>
       <Section>
         <VideoSection results={videosResults} params={params} />
-      </Section>
+      </Section> */}
     </div>
   );
 };
 
 DetailContent.propTypes = {
-  detailResults: PropTypes.object.isRequired,
-  imageResults: PropTypes.object.isRequired,
-  creditsResults: PropTypes.object.isRequired,
-  videosResults: PropTypes.object.isRequired,
+  movieId: PropTypes.number.isRequired,
+  Detail: PropTypes.object.isRequired,
 };
 
 export default DetailContent;
