@@ -1,38 +1,30 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Content from './style';
+
 import { useSelector } from 'react-redux';
-import { DETAIL_MOVIES_REQUEST } from '../../../reducer/movie/detailMovie';
 
-const PosterSection = ({ movieId }) => {
+const PosterSection = ({ }) => {
 
-  const { detailResults, titleLength } = useSelector(state => state.movieData.Detail);
-  const Test = useSelector(state => state.movieData.Detail);
-  
+  const { detailResults, titleLength, genresFeatures } = useSelector(state => state.movieData.Detail);
+
   return (
     <>
       <Content>
         <img src={`https://image.tmdb.org/t/p/original/${detailResults.poster_path}`} />
         <div>
           <h2>
-            { titleLength > 30 ? <>{detailResults.title}<br /></> : <>{detailResults.title}</> }
+            { titleLength > 20 ? <>{detailResults.title}<br /></> : <>{detailResults.title}</> }
             <span>&nbsp;{`(${detailResults.release_date})`}</span>
           </h2>
-          <h3>{detailResults.genres.map(((v) => { return <>{v.name} | &nbsp;</> }))}
-            <span>{detailResults.runtime}分</span>
+          <h3>
+            ジャンル &gt; {genresFeatures.map(v => <>{v}&nbsp;&nbsp;&nbsp;&nbsp;</> )}
+            <br ></br><span>上映時間 &gt; {detailResults.runtime}分</span>
           </h3>
           <p>{detailResults.overview}</p> 
         </div>
       </Content>
-
-      
     </>
   );
-};
-
-PosterSection.propTypes = {
-  results: PropTypes.object.isRequired,
-  movieId: PropTypes.number.isRequired,
 };
 
 export default PosterSection;

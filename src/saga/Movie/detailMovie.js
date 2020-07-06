@@ -7,8 +7,7 @@ import {
   DETAIL_MOVIES_SUCCESS } from '../../reducer/movie/detailMovie';
 
 function detailMoviesAPI(movieId) {
-  // return axios.get(`/movie/${movieId}?api_key=${API_KEY}&${LANGUAGE}`);
-  return axios.get(`/movie/${movieId}?api_key=${API_KEY}`);
+  return axios.get(`/movie/${movieId}?api_key=${API_KEY}&${LANGUAGE}`);
 }
 
 function* detailMovies(action) {
