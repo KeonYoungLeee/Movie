@@ -1,21 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+
+import { useSelector } from 'react-redux';
 import { Wrapper } from './style';
 
-
-const VideoSection = ({ results, params }) => {
+const VideoSection = ({ params }) => {
+  
+  const { datas } = useSelector(state => state.movieData.Videos);
 
   return (
     <Wrapper>
       <h2>動画</h2>
-      
+        {
+          datas.map((v) => { 
+            return (
+              <iframe
+                src={`https://www.youtube.com/embed/${v.key}`}
+                width="100%"
+                height="500"
+                frameBorder="3"
+              >
+              </iframe>
+            )
+          })
+        }
     </Wrapper>
   );
 };
 
 VideoSection.propTypes = {
-  results: PropTypes.object.isRequired,
   params: PropTypes.object.isRequired,
 };
 

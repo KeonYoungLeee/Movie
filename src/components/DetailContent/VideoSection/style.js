@@ -19,4 +19,12 @@ export const Wrapper = styled.div`
   & h2 {
     margin-bottom: 1rem;
   }
+
+  & iframe {
+    @media (max-width: 560px) {
+      height: 300px;
+    }
+    margin-bottom: 1.2em;
+  }
+  
 `;

@@ -4,6 +4,7 @@ export const initialState = {
   videosResults: {},
   isLoading: false,
   isLoaded: false,
+  datas: [],
 };
 
 export const VIDEOS_MOVIES_REQUEST = 'VIDEOS_MOVIES_REQUEST';
@@ -23,6 +24,8 @@ export default (state = initialState, action) => {
         draft.isLoading = false;
         draft.isLoaded = true;
         draft.videosResults = action.videosdata;
+        draft.datas = action.videosdata.results;
+        
         break;
       }
       case VIDEOS_MOVIES_FAILURE: {
