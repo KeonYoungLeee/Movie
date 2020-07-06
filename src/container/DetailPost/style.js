@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BackGround = styled.div`
+export const ContainerBackGround = styled.div`
   background-color: white;
   padding-bottom: 0.1rem;
 `;
@@ -18,13 +18,10 @@ export const BackgroundImageSection = styled.div`
   z-index: 0;
 `;
 
-export const WrapperDetailContent = styled.div`
-
+export const Content = styled.div`
   width: 90vw;
   margin: 0px auto;
-
   @media (min-width: 1200px) {
     width: 1200px;
   }
-
 `;

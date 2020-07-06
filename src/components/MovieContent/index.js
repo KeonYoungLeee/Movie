@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Router from 'next/router';
+import Link from 'next/link';
 import CardStyle from './style';
 
 const MovieContent = ({ movies, id }) => {
-  const onDetail = () => {
-    Router.push({ pathname: '/detail', query: { movieId: parseInt(id, 10) }}, `/detail/${parseInt(id, 10)}`);
-  };
 
   return (
     <>
-      <CardStyle 
-        bodyStyle={{ padding: '5px', }}
-        onClick={onDetail}
-        path={movies.backdrop_path}
+      <Link 
+        href={{ pathname: '/detail', query: { movieId: parseInt(id, 10) } }} 
+        as={ `/detail/${parseInt(id, 10)}` }
       >
-        <p>{movies.title}</p>
-      </CardStyle>
+        <CardStyle 
+          bodyStyle={{ padding: '5px', }}
+          path={movies.backdrop_path}
+        >
+          <a><p>{movies.title}</p></a>
+        </CardStyle>
+      </Link>
     </>
   );
 };
