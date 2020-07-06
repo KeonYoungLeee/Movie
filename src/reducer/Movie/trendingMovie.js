@@ -21,6 +21,7 @@ export default (state = initialState, action) => {
       case TRENDING_MOIVES_SUCCESS: {
         const randomIdLength = parseInt(action.data.length, 10);
         const randomIdIndex = Math.floor(Math.random() * randomIdLength);
+        const movieId = action.data[`${randomIdIndex}`].id; 
         const moviePosterpath = action.data[`${randomIdIndex}`].poster_path;
         const movieBackdroppath = action.data[`${randomIdIndex}`].backdrop_path;
         const movieTitle = action.data[`${randomIdIndex}`].title;
@@ -29,6 +30,7 @@ export default (state = initialState, action) => {
         draft.movieBackdroppath = movieBackdroppath;
         draft.movieTitle = movieTitle;
         draft.movieVoteaverage = movieVoteaverage;
+        draft.movieId = movieId;
         draft.isLoading = false;
         draft.isLoaded = true;
         break;

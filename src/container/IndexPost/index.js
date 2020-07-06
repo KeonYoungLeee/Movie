@@ -7,7 +7,7 @@ import Rollingloading from '../../components/Rollingloading';
 
 const IndexPost = () => {
 
-  const { isLoading, isLoaded, movieBackdroppath, movieTitle } = useSelector(state => state.movieData.Trending);
+  const { movieBackdroppath, movieTitle, movieId } = useSelector(state => state.movieData.Trending);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -21,7 +21,7 @@ const IndexPost = () => {
       {
         <Wrapper>
           <img src={`https://image.tmdb.org/t/p/original/${movieBackdroppath}`} />
-          <PostContent title={movieTitle} />
+          <PostContent title={movieTitle} id={movieId} />
         </Wrapper>
       }
     </>
