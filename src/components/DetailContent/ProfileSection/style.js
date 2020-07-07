@@ -30,7 +30,7 @@ export const Content = styled.div`
     box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 3px 0px;
     margin: 0px auto 0.5rem;
     border-radius: 5px;
-    flex: 1 1 0%;
+    flex: 110%;
   }
 `;
 
