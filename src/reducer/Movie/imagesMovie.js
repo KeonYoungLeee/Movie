@@ -4,6 +4,7 @@ export const initialState = {
   imageResults: {},
   isLoading: false,
   isLoaded: false,
+  backdrops: [],
 };
 
 export const IMAGES_MOVIES_REQUEST = 'IMAGES_MOVIES_REQUEST';
@@ -23,6 +24,7 @@ export default (state = initialState, action) => {
         draft.isLoading = false;
         draft.isLoaded = true;
         draft.imageResults = action.imagedata;
+        draft.backdrops = draft.imageResults.backdrops.map(items => items);
         break;
       }
       case IMAGES_MOVIES_FAILURE: {

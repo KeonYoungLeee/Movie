@@ -1,6 +1,7 @@
 import React from 'react';
-import { Wrapper, List } from './style';
 import Link from 'next/link';
+
+import { Wrapper, List } from './style';
 
 const VerticalBox = () => {
   return (

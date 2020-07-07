@@ -1,8 +1,8 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Router from 'next/router'
-import { Wrapper, Container, BackIcon, SearchScreen, SearchForm, SearchInput, SearchCloseBtn, SearchIcon, Menu, CloseBtn, List, HambugerMenu } from './style';
 import Link from 'next/link';
+
+import { Wrapper, Container, BackIcon, SearchScreen, SearchForm, SearchInput, SearchCloseBtn, SearchIcon, Menu, CloseBtn, List, HambugerMenu } from './style';
 
 const HorizonBox = () => {
 

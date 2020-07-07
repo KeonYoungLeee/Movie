@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
-import { API_KEY } from './../index';
+import { API_KEY, LANGUAGE } from './../index';
 import { 
   CREDITS_MOVIES_REQUEST, 
   CREDITS_MOVIES_SUCCESS, 
   CREDITS_MOVIES_FAILURE } from '../../reducer/movie/creditsMovie';
 
 function creditsMoviesAPI(movieId) {
-  return axios.get(`/movie/${movieId}/credits?api_key=${API_KEY}`);
+  return axios.get(`/movie/${movieId}/credits?api_key=${API_KEY}&${LANGUAGE}`);
 }
 
 function* creditsMovies(action) {

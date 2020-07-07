@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Wrapper, Container, Background } from './style';
 import VerticalBox from './VerticalBox';
 import HorizonBox from './HorizonBox';
+
+import { Wrapper, Container, Background } from './style';
 
 const Header = () => {
 

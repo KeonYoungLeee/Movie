@@ -4,6 +4,8 @@ export const initialState = {
   creditsResults: {},
   isLoading: false,
   isLoaded: false,
+  casts: [],
+  profiles: [],
 };
 
 export const CREDITS_MOVIES_REQUEST = 'CREDITS_MOVIES_REQUEST';
@@ -22,7 +24,8 @@ export default (state = initialState, action) => {
       case CREDITS_MOVIES_SUCCESS: {
         draft.isLoading = false;
         draft.isLoaded = true;
-        draft.creditsResults = action.creditsResults;
+        draft.creditsResults = action.creditsdata;
+        draft.casts = action.creditsdata.cast.map(items => items);
         break;
       }
       case CREDITS_MOVIES_FAILURE: {

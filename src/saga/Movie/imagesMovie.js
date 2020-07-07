@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
-import { API_KEY } from './../index';
+import { API_KEY, LANGUAGE } from './../index';
 import { 
   IMAGES_MOVIES_REQUEST, 
   IMAGES_MOVIES_SUCCESS, 

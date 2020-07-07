@@ -47,8 +47,6 @@ const MoviePost = () => {
     setPopular(true);
   }, [now, current, popular]);
 
-  
-
   useEffect(() => {
     dispatch({
       type: CURRENT_MOVIES_REQUEST,

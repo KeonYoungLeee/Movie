@@ -52,15 +52,16 @@ const DetailContent = ({ movieId, Detail }) => {
       <Section>
         <PosterSection results={Detail} movieId={movieId} />
       </Section>
-      {/* <Section>
-        <ProfileSection results={creditsResults} params={params} />
+      <Section>
+        <ProfileSection params={params} />
       </Section>
       <Section>
-        <ImagesSection results={imageResults} params={params} />
+        <ImagesSection params={params} />
       </Section>
       <Section>
-        <VideoSection results={videosResults} params={params} />
-      </Section> */}
+        <VideoSection params={params} />
+      </Section>
+      <Section></Section>
     </div>
   );
 };

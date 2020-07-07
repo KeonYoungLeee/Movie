@@ -20,7 +20,7 @@ const PosterSection = ({ }) => {
             ジャンル &gt; {genresFeatures.map(v => <>{v}&nbsp;&nbsp;&nbsp;&nbsp;</> )}
             <br ></br><span>上映時間 &gt; {detailResults.runtime}分</span>
           </h3>
-          <p>{detailResults.overview}</p> 
+          <p>{detailResults.overview==='' ? <>準備中</> : `${detailResults.overview}`}</p> 
         </div>
       </Content>
     </>
