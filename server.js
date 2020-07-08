@@ -18,8 +18,7 @@ app.prepare().then( () => {
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
   
-  server.get('/detail/:movieid', (req, res) => {
-    console.log(req.params);
+  server.get('/detail/:title', (req, res) => {
     return app.render(req, res, '/detail', {movieid: parseInt(req.params.movie_id, 10)});
   });
     
