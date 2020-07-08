@@ -8,6 +8,7 @@ import Popular from './popularMovie';
 import Trending from './trendingMovie';
 import Upcoming from './upcomingMovie';
 import Videos from './videosMovie';
+import Search from './searchMovie';
 
 const rootReducer = combineReducers({
   Credits,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   Trending,
   Upcoming,
   Videos,
+  Search,
 });
 
 export default rootReducer;

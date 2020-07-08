@@ -8,6 +8,7 @@ import popularMovieSaga from './popularMovie';
 import trendingMovieSaga from './trendingMovie';
 import upcomingMovieSaga from './upcomingMovie';
 import videosMovieSaga from './videosMovie';
+import searchMovieSaga from './searchMovie';
 
 export default function* movieSaga() {
   yield all([
@@ -19,5 +20,6 @@ export default function* movieSaga() {
     call(trendingMovieSaga),
     call(upcomingMovieSaga),
     call(videosMovieSaga),
+    call(searchMovieSaga),
   ]);
 };
