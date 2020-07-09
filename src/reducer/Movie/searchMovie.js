@@ -24,8 +24,6 @@ export default (state = initialState, action) => {
         draft.isLoading = false;
         draft.isLoaded = true;
         draft.searchResults = action.searchdata;
-        draft.id = action.searchdata.map((items) => items.id);
-        draft.title = action.searchdata.map((items) => items.title);
         break;
       }
       case SEARCH_MOIVES_FAILURE: {

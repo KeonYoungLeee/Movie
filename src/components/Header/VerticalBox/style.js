@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { SearchOutlined } from '@ant-design/icons'
+
 
 export const Wrapper = styled.div`
   background-color: black;
@@ -21,10 +23,26 @@ export const List = styled.div`
 
     & input {
       font-size: 1.2rem;
+      color: black;
     }
 
     & a {
       color: white;
     }
+  }
+`;
+
+export const SearchIcon = styled(SearchOutlined)`
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & svg {
+    color: white;
+    width: 70%;
+    height: 70%;
   }
 `;
