@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,24 +17,24 @@ const SearchPost = () => {
     setInputValue(e.target.value);
   });
 
+  const settimeoutRef = useRef();
+  const timeoutID = () => {
+    if (inputValue === '') {
+      setBlankCheck(false);
+    } else {
+      setBlankCheck(true);
+      dispatch({
+        type: SEARCH_MOIVES_REQUEST,
+        title: inputValue,
+      });
+    }
+  }
+
   useEffect(() => {
-    const timeoutID = setTimeout(() => {
-      if (inputValue === '') {
-        
-        setBlankCheck(false);
-      } else {
-        setBlankCheck(true);
-        dispatch({
-          type: SEARCH_MOIVES_REQUEST,
-          title: inputValue,
-        });
-      }
-    }, 500);
-
+    settimeoutRef.current = setTimeout(timeoutID, 500);
     return () => {
-      clearTimeout(timeoutID);
+      clearTimeout(settimeoutRef.current);
     };
-
   }, [inputValue]);
 
   return (
