@@ -29,6 +29,7 @@ TMDB(The Movie DataBase)はReactプロジェクトでAPIを活用して映画検
 * Redux-Sagaを使用して非同期で変化するステェィトゥ管理をしました。
 * Styeld componentsを使用して各コンポーネントをCSS-in-JS方式でスタイリングをしました。
 * オープンAPIとaxiosを使ってデータを読み込みました。
+* 検索する時にdebounceを使用して指定時間内に何度発生しても最後の1回だけ実行する事を取得しました。
 
 <br>
 
@@ -37,8 +38,8 @@ TMDB(The Movie DataBase)はReactプロジェクトでAPIを活用して映画検
 - [x]  Redux, Redux-saga適応
 - [x]  Nextでページ及びルーター構築
 - [x]  Style Component
-
-- [ ]  検索機能
+- [x]  検索機能
+- [x] YouTubue動画 
 - [ ]  UI/UXテスト
 
 
