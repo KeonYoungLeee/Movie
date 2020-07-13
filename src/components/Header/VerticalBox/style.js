@@ -20,12 +20,10 @@ export const List = styled.div`
     display: inline-block;
     font-size: 1.5rem;
     padding: 0px 20px 0px 20px;
-
     & input {
       font-size: 1.2rem;
       color: black;
     }
-
     & a {
       color: white;
     }

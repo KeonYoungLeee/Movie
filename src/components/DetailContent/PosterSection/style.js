@@ -23,6 +23,19 @@ const Content = styled.div`
   & h3 {
     font-size: 1.4em;
   }
+
+  @media (max-width: 1200px) {
+    position: relative;
+    text-align: center;
+    display: block;
+    & img {
+      width: 50vw;
+      margin-right: 0rem;
+    }
+    & p {
+      text-align: left;
+    }
+  }
 `;
 
 export default Content;

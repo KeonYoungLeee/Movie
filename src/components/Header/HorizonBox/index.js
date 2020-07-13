@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Router from 'next/router'
 import Link from 'next/link';
 
-import { Wrapper, Container, BackIcon, SearchScreen, SearchForm, SearchInput, SearchCloseBtn, SearchIcon, Menu, CloseBtn, List, HambugerMenu } from './style';
+import { Wrapper, Container, BackIcon, SearchScreen, SearchForm, SearchInput, SearchCloseBtn, SearchIcon, Menu, CloseBtn, List, HambugerMenu, MenuBackGround } from './style';
 
 const HorizonBox = () => {
 
@@ -15,17 +15,10 @@ const HorizonBox = () => {
     setToggle(toggle === false ? true : false);
   }, [toggle]);
 
-  const onSearchToggle = useCallback(() => {
-    setSearchToggle(searchToggle === false ? true : false);
-  }, [searchToggle]);
-
   const onLinkClick = useCallback(() => {
     setToggle(false)
   }, [toggle])
 
-  const onChangeSearchInput = useCallback((event) => {
-    setSearchInput(event.target.value);
-  });
 
   const onPreviousPage = () => {
     Router.back();
@@ -49,35 +42,23 @@ const HorizonBox = () => {
       <Container>
         <div style={{ display: "flex"}}>
           <BackIcon onClick={onPreviousPage} />
-          { searchToggle ? (
-              <SearchScreen>
-                <SearchForm>
-                  <h2>Search</h2>
-                  <div style={{ display: "flex", justifyContent: "center"}}>
-                    <SearchInput 
-                      text="text"
-                      value={searchInput}
-                      onChange={onChangeSearchInput}
-                    />
-                    <SearchCloseBtn onClick={onSearchToggle} />
-                  </div>
-                </SearchForm>
-              </SearchScreen>
-            ) : (
-              <SearchIcon onClick={onSearchToggle} />
-            )}
         </div>
         { toggle ? (
-          <Menu ref={currentRef} open={toggle}>
-            <CloseBtn onClick={onClickToogle} />
-            <List hoverEvent>
-              <li key="home" onClick={onLinkClick} ><Link href="/">ホーム</Link></li>
-              <li key="movie" onClick={onLinkClick} ><Link href="/movie">映画</Link></li>
-              <li key="about" onClick={onLinkClick} ><Link href="/about">その他</Link></li>
-            </List>
-          </Menu>
+          <MenuBackGround>
+            <Menu ref={currentRef} open={toggle}>
+              <CloseBtn onClick={onClickToogle} />
+              <List hoverEvent>
+                <li key="home" onClick={onLinkClick} ><Link href="/">ホーム</Link></li>
+                <li key="movie" onClick={onLinkClick} ><Link href="/movie">映画</Link></li>
+                <li key="about" onClick={onLinkClick} ><Link href="/about">その他</Link></li>
+              </List>
+            </Menu>
+          </MenuBackGround>
         ) : (
-          <HambugerMenu onClick={onClickToogle} open={toggle} />
+          <div style={{ display: "flex"}}>
+            <Link href="/search"><SearchIcon> </SearchIcon></Link>
+            <HambugerMenu onClick={onClickToogle} open={toggle} />
+          </div>
         )}
       </Container>
     </Wrapper>

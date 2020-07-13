@@ -62,12 +62,8 @@ export const Menu = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3rem 0;
-
-  /* transition: transform 0.3s ease-in-out;
-  transform: ${({ open }) => ( open ? "translateX(0)" : "translateX(100)")}; */
-
   animation-name: ${coolBoxKeyframes};
-  animation-duration: 1s;
+  animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
 `;
@@ -86,8 +82,6 @@ export const CloseBtn = styled(CloseOutlined)`
 
   & svg {
     color: white;
-    /* width: 50px;
-    height: 30px; */
     width: 70%;
     height: 70%;
   }
@@ -146,8 +140,6 @@ export const BackIcon = styled(ArrowLeftOutlined)`
 
   & svg {
     color: white;
-    /* width: 50px;
-    height: 30px; */
     width: 70%;
     height: 70%;
   }
@@ -243,4 +235,17 @@ export const SearchCloseBtn = styled(CloseOutlined)`
     }
   }
 
+`;
+
+export const MenuBackGround = styled.div`
+  position: fixed;
+  z-index: 7;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s linear 0s;
 `;

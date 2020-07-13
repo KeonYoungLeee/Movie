@@ -8,7 +8,7 @@ import { SEARCH_MOIVES_REQUEST } from '../../reducer/Movie/searchMovie';
 const SearchPost = () => {
 
   const dispatch = useDispatch();
-  const { searchResults, id, title } = useSelector(state => state.movieData.Search);
+  const { searchResults, id } = useSelector(state => state.movieData.Search);
 
   const [inputValue, setInputValue] = useState('');
   const [blankCheck, setBlankCheck] = useState(false);
@@ -49,7 +49,6 @@ const SearchPost = () => {
                   href={{ pathname: '/detail', query: { movieId: parseInt(itmes.id, 10) } }} 
                   as={ `/detail/${parseInt(id, 10)}` }
                 ><a>{blankCheck && itmes.title}</a></Link>
-              
               );
             })}
           </ResultDisplay>
