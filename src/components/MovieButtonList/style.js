@@ -47,6 +47,13 @@ export const MovieLayoutList = styled.div`
     border-top: 0.5vmin solid rgb(255, 255, 255);
     border-bottom: 0.5vmin solid rgb(255, 255, 255);
   }
+  @media (max-width: 768px) {
+    & button {
+      padding: 13px 5vw 15px 5vw;
+      font-size: 1.2rem;
+      border-radius: 22px;
+    }
+  }
 `;
 
 export const ResponsiveButton = styled.button`

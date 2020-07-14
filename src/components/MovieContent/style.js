@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Card } from 'antd';
+import { StarFilled } from '@ant-design/icons'
 
-const CardStyle = styled(Card)`
+export const CardStyle = styled(Card)`
   position: relative;
   flex-basis: 100%;
   height: 15vw;
@@ -33,15 +34,37 @@ const CardStyle = styled(Card)`
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.3);
   }
+`;
 
-  & p {
-    position: relative;
-    z-index: 1;
-    color : white;
-    font-size : 1.3em;
-    margin-bottom: 2.2rem;
-    text-align: center;
+export const Title = styled.p`
+  position: relative;
+  z-index: 1;
+  color : white;
+  font-size : 1.3em;
+  margin-bottom: 0.3rem;
+  text-align: center;
+`;
+
+export const Vote = styled.p`
+  position: relative;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+  color : white;
+  font-size : 1.3em;
+  margin-left: 0.7rem;
+  text-align: center;
+`;
+
+export const VoteContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.3rem;
+`;
+
+export const Star = styled(StarFilled)`
+  & svg {
+    color: yellow;
   }
 `;
 
-export default CardStyle;

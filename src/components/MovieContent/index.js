@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import CardStyle from './style';
+import { CardStyle, Title, VoteContent, Vote, Star } from './style';
 
 const MovieContent = ({ movies, id }) => {
 
@@ -15,7 +15,10 @@ const MovieContent = ({ movies, id }) => {
           bodyStyle={{ padding: '5px', }}
           path={movies.backdrop_path}
         >
-          <a><p>{movies.title}</p></a>
+          <a><Title>{movies.title}</Title></a>
+          <VoteContent>
+            <Star /><Vote>{movies.vote_average}</Vote>
+          </VoteContent>
         </CardStyle>
       </Link>
     </>
