@@ -15,18 +15,19 @@ function* trendingMoives() {
   try {
     const result = yield call(trendingMoivesAPI);
     const { results } = result.data;
-    let randomMovieID = results[Math.floor(Math.random() * results.length)].id;
-    // 코드 수정해줘야한다. 여기에서 각각의 랜덤으로 인해 정보가 다 다다르다
-    let randomMovieTitle = results[Math.floor(Math.random() * results.length)].title;
-    let randomMovieBackdrop_path = results[Math.floor(Math.random() * results.length)].backdrop_path;
-    let randomMovieVote_average = results[Math.floor(Math.random() * results.length)].vote_average;
+    const randomIdLength = parseInt(results.length, 10);
+    const randomIdIndex = Math.floor(Math.random() * randomIdLength);
+    const movieId = results[`${randomIdIndex}`].id; 
+    const movieBackdroppath = results[`${randomIdIndex}`].backdrop_path;	
+    const movieTitle = results[`${randomIdIndex}`].title;	
+    const movieVoteaverage = results[`${randomIdIndex}`].vote_average;
     yield put({
       type: TRENDING_MOIVES_SUCCESS,
       results: {
-        id : randomMovieID,
-        title : randomMovieTitle,
-        backdrop_path : randomMovieBackdrop_path,
-        vote_average : randomMovieVote_average,
+        id : movieId,
+        title : movieTitle,
+        backdrop_path : movieBackdroppath,
+        vote_average : movieVoteaverage,
       },
     });
   } catch (error) {
