@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { all, fork, put, takeLatest, call } from 'redux-saga/effects';
+import { all, fork, put, takeLatest, call, delay } from 'redux-saga/effects';
 import { API_KEY, LANGUAGE } from './../index';
 import {
   TRENDING_MOIVES_REQUEST,
@@ -14,9 +14,20 @@ function trendingMoivesAPI() {
 function* trendingMoives() {
   try {
     const result = yield call(trendingMoivesAPI);
+    const { results } = result.data;
+    let randomMovieID = results[Math.floor(Math.random() * results.length)].id;
+    // 코드 수정해줘야한다. 여기에서 각각의 랜덤으로 인해 정보가 다 다다르다
+    let randomMovieTitle = results[Math.floor(Math.random() * results.length)].title;
+    let randomMovieBackdrop_path = results[Math.floor(Math.random() * results.length)].backdrop_path;
+    let randomMovieVote_average = results[Math.floor(Math.random() * results.length)].vote_average;
     yield put({
       type: TRENDING_MOIVES_SUCCESS,
-      data: result.data.results,
+      results: {
+        id : randomMovieID,
+        title : randomMovieTitle,
+        backdrop_path : randomMovieBackdrop_path,
+        vote_average : randomMovieVote_average,
+      },
     });
   } catch (error) {
     console.error(error);

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Content } from './style';
 
 const PostContent = ({ title, id }) => {
+  console.log(`PostContent => ${id}, ${title}`);
   return (
     <Content>
       <h2>今日の映画</h2>

@@ -1,13 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
 import WithRedux from 'next-redux-wrapper';
-import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import AppLayout from '../components/AppLayout';
 import reducer from '../reducer/index';
 import rootSaga from '../saga';
+
+import { createStore, compose, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 
 import './../components/DetailContent/ProfileSection/swiper.css';
 import 'swiper/css/swiper.css';

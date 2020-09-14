@@ -7,6 +7,7 @@ import { Wrapper, ContainerBackGround, BackgroundImageSection, Content } from '.
 import { DETAIL_MOVIES_REQUEST } from '../../reducer/movie/detailMovie';
 
 const DetailPost = ({ movieId }) => {
+  console.log(`DetailPost -> ${movieId}`);
   
   const dispatch = useDispatch();
   const { detailResults } = useSelector(state => state.movieData.Detail);

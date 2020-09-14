@@ -1,7 +1,12 @@
 import produce from 'immer';
 
 export const initialState = {
-  results: {},
+  results: {
+    id: '',
+    title: '',
+    backdrop_path: '',
+    vote_average: '',
+  },
   isLoading: false,
   isLoaded: false,
 };
@@ -19,18 +24,10 @@ export default (state = initialState, action) => {
         break;
       }
       case TRENDING_MOIVES_SUCCESS: {
-        const randomIdLength = parseInt(action.data.length, 10);
-        const randomIdIndex = Math.floor(Math.random() * randomIdLength);
-        const movieId = action.data[`${randomIdIndex}`].id; 
-        const moviePosterpath = action.data[`${randomIdIndex}`].poster_path;
-        const movieBackdroppath = action.data[`${randomIdIndex}`].backdrop_path;
-        const movieTitle = action.data[`${randomIdIndex}`].title;
-        const movieVoteaverage = action.data[`${randomIdIndex}`].vote_average;
-        draft.moviePosterpath = moviePosterpath;
-        draft.movieBackdroppath = movieBackdroppath;
-        draft.movieTitle = movieTitle;
-        draft.movieVoteaverage = movieVoteaverage;
-        draft.movieId = movieId;
+        draft.id = action.results.id;
+        draft.title = action.results.title;
+        draft.backdrop_path = action.results.backdrop_path;
+        draft.vote_average = action.results.vote_average;
         draft.isLoading = false;
         draft.isLoaded = true;
         break;

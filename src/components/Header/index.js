@@ -9,7 +9,7 @@ const Header = () => {
   const [isRealSize, setIsRealSize] = useState(false);
 
   const onRealSize = useCallback(() => {
-    setIsRealSize(window.innerWidth < 560);
+    setIsRealSize(window.innerWidth < 1000);
   }, [isRealSize]);
 
   useEffect(() => {
